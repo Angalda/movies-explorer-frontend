@@ -1,6 +1,86 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 0;
+    align-items: center;
+    padding: 18px 70px;
+    margin: 0 auto;
+    background-color: #F3C1F8;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        padding: 18px 14px;
+    }
+}
+
+.header__logo {
     margin: 0;
+    padding: 0;
+    width: 38px;
+}
+
+.header__signup-btn {
+    padding: 8px 20px;
+    margin: 0 30px 0 0;
+    border: none;
+    background-color: #F3C1F8;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .header__signup-btn {
+        margin: 0 10px 0 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__signup-btn {
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+}
+
+.header__signup-btn:hover {
+    background-color: #f2b8fa;
+    cursor: pointer;
+}
+
+.header__signin-btn {
+    padding: 8px 20px;
+    margin: 0;
+    border: none;
+    background-color: #000;
+    border-radius: 3px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 320px) {
+    .header__signin-btn {
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+}
+
+.header__signin-btn:hover {
+    background-color: #663d66f1;
+    cursor: pointer;
+}
+
+.header__menu {
+    display: none;
+}
+
+.header__burger-menu {
+    display: none;
 }
