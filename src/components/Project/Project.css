@@ -1,0 +1,20 @@
+.project__container {
+    background-color: #FFF;
+    margin: 0 auto;
+    padding: 110px 70px;
+    border: none;
+    max-width: 1280px;
+}
+
+.project__about {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #000;
+    padding: 0 0 23px;
+    margin: 0;
+}
+.project__list {
+    display: flex;
+}

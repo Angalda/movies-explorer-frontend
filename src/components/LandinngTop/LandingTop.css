@@ -34,9 +34,9 @@
 }
 
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 991.98px) {
     .landing-top__container {
-        padding: 300px 0px 30px;
+        padding: 300px 0px 70px;
     }
 
     .landing-top__description {
@@ -58,16 +58,18 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 575.98px) {
     .landing-top__container {
-        padding: 18px 0;
+        padding: 18px 0 40px;
+        overflow: hidden;
     }
 
     .landing-top__img-container {
         width: 680px;
+        overflow: hidden;
     }
 
     .landing-top__img {
-        overflow: hidden;
+        
     }
 }
