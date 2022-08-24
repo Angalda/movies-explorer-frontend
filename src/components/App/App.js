@@ -3,7 +3,8 @@
 import Header from '../Header/Header';
 import LandingTop from '../LandinngTop/LandingTop';
 import Project from '../Project/Project';
-import Technology from '../Technology/Technology'
+import Technology from '../Technology/Technology';
+import Student from '../Student/Student'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <LandingTop />
       <Project />
       <Technology />
+      <Student />
     </div>
   );
 }
