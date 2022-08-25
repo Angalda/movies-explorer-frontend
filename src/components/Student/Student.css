@@ -180,6 +180,13 @@
 
     .student__name {
         margin: 40px 0 0;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .student__brief {
+        font-size: 11px;
+        line-height: 16px;
     }
 
     .student__about {
@@ -189,6 +196,13 @@
         flex-wrap: wrap-reverse;
         justify-content: center;
     }
+
+    
+    .student__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
 
     .student__social-links {
         margin: 69px 0 0;
