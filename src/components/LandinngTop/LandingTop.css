@@ -6,13 +6,11 @@
     max-width: 1280px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
 }
 
 .landing-top__description {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     font-size: 40px;
     line-height: 52px;
@@ -77,7 +75,4 @@
         overflow: hidden;
     }
 
-    .landing-top__img {
-        
-    }
 }
