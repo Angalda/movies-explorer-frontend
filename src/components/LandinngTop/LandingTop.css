@@ -48,6 +48,7 @@
     .landing-top__img-container {
         justify-content: center;
         max-width: 680px;
+        margin: 0 auto;
     }
 
     .landing-top__img {
@@ -68,11 +69,20 @@
         line-height: 39px;
         letter-spacing: -0.04em;
         margin: 0;
+        padding: 0;
     }
 
     .landing-top__img-container {
         width: 680px;
         overflow: hidden;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: -92px;
+    }
+
+    .landing-top__img {
+        margin: 60px 0 0;
     }
 
 }
