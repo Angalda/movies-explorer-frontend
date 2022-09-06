@@ -1,4 +1,5 @@
 import logo from '../../images/logo.svg';
+import account from '../../images/icon-profile.svg';
 
 export default function Header(){
   return (
@@ -12,7 +13,7 @@ export default function Header(){
           <li className='header__menu-item'>Сохраненные фильмы</li>
         </ul>
       </nav>
-      <div className='header__aaccount'></div>
+      <a href = "#" className="header__account-container"><img className='header__account-img' src={account} alt="icon-account" /> Аккаунт</a>
       <button className='header__burger-menu'></button>
       <div className='header__login'>
         <button className='header__signup-btn'>Регистация</button>

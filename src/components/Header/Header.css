@@ -15,6 +15,10 @@
     width: 38px;
 }
 
+.header__login {
+    display: none;
+}
+
 .header__signup-btn {
     padding: 8px 20px;
     margin: 0 12px 0 0;
@@ -51,7 +55,39 @@
 }
 
 .header__menu {
-    display: none;
+    display: block;
+}
+
+.header__menu-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 16px;
+}
+
+.header__menu-item {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.header__account-container {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.header__account {
+    padding: 0;
+    margin: 0;
+    width: 12px;
 }
 
 .header__burger-menu {
