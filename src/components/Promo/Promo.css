@@ -1,4 +1,4 @@
-.landing-top__container {
+.promo__container {
     background-color: #F3C1F8;
     margin: 0 auto;
     padding: 50px 70px 60px;
@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-.landing-top__description {
+.promo__description {
     margin: 0;
     padding: 0;
     font-size: 40px;
@@ -19,14 +19,14 @@
     max-width: 626px;
 }
 
-.landing-top__img-container {
+.promo__img-container {
     display: flex;
     padding: 0;
     margin: 0;
     justify-content: end;
 }
 
-.landing-top__img {
+.promo__img {
     margin: 102px 0 0;
     padding: 0;
     max-width: 722px;
@@ -34,24 +34,24 @@
 
 
 @media screen and (max-width: 991.98px) {
-    .landing-top__container {
+    .promo__container {
         padding: 300px 0px 70px;
     }
 
-    .landing-top__description {
+    .promo__description {
         text-align: center;
         padding: 0 10px;
         margin: 0 44px;
         max-width: 680px;
     }
 
-    .landing-top__img-container {
+    .promo__img-container {
         justify-content: center;
         max-width: 680px;
         margin: 0 auto;
     }
 
-    .landing-top__img {
+    .promo__img {
         margin: 140px 0 0;
         width: 100%;
     }
@@ -59,12 +59,12 @@
 
 
 @media screen and (max-width: 575.98px) {
-    .landing-top__container {
+    .promo__container {
         padding: 183px 10px 40px;
         overflow: hidden;
     }
 
-    .landing-top__description {
+    .promo__description {
         font-size: 31px;
         line-height: 39px;
         letter-spacing: -0.04em;
@@ -72,7 +72,7 @@
         padding: 0;
     }
 
-    .landing-top__img-container {
+    .promo__img-container {
         width: 680px;
         overflow: hidden;
         margin: 0;
@@ -81,7 +81,7 @@
         left: -92px;
     }
 
-    .landing-top__img {
+    .promo__img {
         margin: 60px 0 0;
     }
 

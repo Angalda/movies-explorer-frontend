@@ -4,9 +4,16 @@
     align-items: center;
     padding: 17px 70px;
     margin: 0 auto;
-    background-color: #F3C1F8;
     max-width: 1280px;
     box-sizing: border-box;
+}
+
+.header__account-container {
+    color: #000;
+}
+
+.header-background {
+    background-color: #F3C1F8;
 }
 
 .header__logo {
@@ -29,7 +36,6 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.05em;
-
 }
 
 .header__signup-btn:hover {
@@ -109,14 +115,15 @@
     .header {
         padding: 18px 14px;
     }
+
     .header__signup-btn {
         font-size: 10px;
         padding: 5px 12px;
         margin: 0 5px 0 0;
     }
+
     .header__signin-btn {
         font-size: 10px;
         padding: 5px 12px;
     }
 }
-

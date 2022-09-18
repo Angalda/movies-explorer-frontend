@@ -1,23 +1,29 @@
 
 
 import Header from '../Header/Header';
-import LandingTop from '../LandinngTop/LandingTop';
-import Project from '../Project/Project';
-import Technology from '../Technology/Technology';
-import Student from '../Student/Student';
+import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
 import Footer from '../Footer/Footer';
+import SearchForm from '../SearchForm/SearchForm';
 
 function App() {
   return (
     <div className="page">
       <Header />
-      <LandingTop />
-      <Project />
-      <Technology />
-      <Student />
-      <Footer />
+      <SearchForm />
     </div>
   );
 }
+
+/*
+<Header />
+<Promo />
+<AboutProject />
+<Techs />
+<AboutMe />
+<Footer />
+*/
 
 export default App;
