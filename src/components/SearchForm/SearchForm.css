@@ -2,7 +2,7 @@
     margin: 0 auto;
     max-width: 1280px;
     box-sizing: border-box;
-    padding: 70px 70px 10px;
+    padding: 65px 30px 10px;
 }
 
 .searchForm__form {
@@ -18,10 +18,11 @@
     box-sizing: border-box;
     width: 100%;
     padding: 25px;
-    border: 1.5px solid #AAAAAA;
+    border: 1px solid #AAAAAA;
     font-size: 18px;
     line-height: 20px;
     color: #A0A0A0;
+    border-radius: 10px;
 }
 
 .searchForm__button {
@@ -33,7 +34,32 @@
     padding: 17px 0;
     width: 100px;
     border-radius: 5px;
-    position: relative;
-    top: -65px;
-    margin: 0 10px 0 0;
+    position: absolute;
+    /*top: -65px;*/
+    margin: 8px 10px 0 0;
+    cursor: pointer;
+}
+
+.searchForm__button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 575.98px) {
+    .searchForm {
+        padding: 68px 14px 10px;
+    }
+
+    .searchForm__input {
+        padding: 17px 11px;
+        border-radius: 10px;
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .searchForm__button {
+        
+        padding: 11.5px 0;
+        width: 80px;
+        margin: 4px 6px 0 0;
+    }
 }

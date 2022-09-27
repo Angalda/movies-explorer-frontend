@@ -8,10 +8,6 @@
     box-sizing: border-box;
 }
 
-.header__account-container {
-    color: #000;
-}
-
 .header-background {
     background-color: #F3C1F8;
 }
@@ -20,6 +16,10 @@
     margin: 0;
     padding: 0;
     width: 38px;
+}
+
+.header__logo:hover {
+    opacity: 0.7;
 }
 
 .header__login {
@@ -65,7 +65,7 @@
 }
 
 .header__menu-list {
-    padding: 0;
+    padding: 0 0 0 65px;
     margin: 0;
     list-style-type: none;
     display: flex;
@@ -81,13 +81,26 @@
     line-height: 18px;
 }
 
+.header__menu-item:hover {
+    opacity: 0.7;
+}
+
+.header__menu-item-link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .header__account-container {
-    padding: 0;
     margin: 0;
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
+    color: #000;
+    border: 2px solid #aaa;
+    border-radius: 50px;
+    padding: 8px 12px;
 }
 
 .header__account {
@@ -96,8 +109,26 @@
     width: 12px;
 }
 
+.header__account-container:hover {
+    opacity: 0.7;
+}
+
 .header__burger-menu {
     display: none;
+}
+
+.header__burger-line {
+    width:28px;
+    border-top:3px solid #000;
+    box-sizing: border-box;
+}
+
+.header__navigation-wrap {
+    display: none;
+}
+
+.header__navigation {
+   display: none;
 }
 
 @media screen and (max-width: 991.98px) {
@@ -108,8 +139,92 @@
     .header__signup-btn {
         margin: 0 10px 0 0;
     }
+
+    .header__menu {
+        display: none;
+    }
+
+    .header__account-container {
+        display: none;
+    }
+
+    .header__burger-menu {
+        padding: 2px 0 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        background-color: #FFF;
+        width: 44px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__burger-menu:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .header__burger-line {
+        height: 10px;
+        width: 28px;
+    }
+
+    /*--------------------Меню (по клику на бургер)--------------------*/
+.header__navigation-wrap {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000000;
+    opacity: 0.3;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    z-index: 1;
+    display: flex;
 }
 
+.header__navigation {
+    width: 66%;
+    height: 100%;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header__navigation-close {
+   border: none;
+   background-color: #FFF;
+   align-self: flex-end;
+}
+
+.header__nav-list {
+    list-style: none;
+    padding: 159px 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.header__nav-item-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.header__nav-item-link:hover {
+    text-decoration: underline;
+}
+
+}
 
 @media screen and (max-width: 575.98px) {
     .header {
@@ -125,5 +240,16 @@
     .header__signin-btn {
         font-size: 10px;
         padding: 5px 12px;
+    }
+
+    .header__burger-menu {
+        width: 40px;
+    }
+
+    .header__burger-line {
+        width:22px;
+        height: 9px;
+        border-top: 3px solid #000;
+        box-sizing: border-box;
     }
 }
