@@ -1,0 +1,45 @@
+.profile__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 74px 70px 70px;
+    margin: 0 auto;
+    max-width: 1280px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.profile__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 0 0 107px;
+    margin: 0;
+}
+
+.profile__form {
+    margin: 0;
+    padding-left: 10px;
+}
+
+.profile__inputs:first-child {
+border-bottom: 1px solid #E8E8E8;
+box-sizing: border-box;
+
+}
+
+.profile__input-name {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.profile__input {
+    border: none;
+    padding: 17px 0 16px 235px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: right;
+    color: #000;
+}

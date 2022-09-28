@@ -8,24 +8,32 @@ import AboutMe from '../AboutMe/AboutMe';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Profile from '../Profile/Profile';
 
 function App() {
   return (
     <div className="page">
       <Header />
-      <SearchForm />
-      <MoviesCardList />
-      <Footer />
+      <Profile />
+
     </div>
   );
 }
 
-/*
+/* Главная
 <Header />
 <Promo />
 <AboutProject />
 <Techs />
 <AboutMe />
+<Footer />
+*/
+
+
+/*  Фильмы (с меню)   
+<Header />
+<SearchForm />
+MoviesCardList />
 <Footer />
 */
 
