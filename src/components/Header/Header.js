@@ -11,7 +11,7 @@ export default function Header(){
       <nav className='header__menu'>
         <ul className='header__menu-list'>
           <li className='header__menu-item'><a href="#" className="header__menu-item-link">Фильмы</a></li>
-          <li className='header__menu-item'><a href="#" className="header__menu-item-link">Сохраненные фильмы</a></li>
+          <li className='header__menu-item'><a href="#" className="header__menu-item-link">Сохранённые фильмы</a></li>
         </ul>
       </nav>
       <a href = "#" className="header__account-container"><img className='header__account-img' src={account} alt="icon-account" /> Аккаунт</a>
@@ -28,7 +28,7 @@ export default function Header(){
           <ul className='header__nav-list'>
             <li className='header__nav-item'><a href="#" className="header__nav-item-link">Главная</a></li>
             <li className='header__nav-item'><a href="#" className="header__nav-item-link">Фильмы</a></li>
-            <li className='header__nav-item'><a href="#" className="header__nav-item-link">Сохраненные фильмы</a></li>
+            <li className='header__nav-item'><a href="#" className="header__nav-item-link">Сохранённые фильмы</a></li>
           </ul>
           <a href="#" className="header__nav-account-container"><img className='header__nav-account-img' src={account} alt="icon-account" /> Аккаунт</a>
         </nav>

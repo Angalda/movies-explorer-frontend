@@ -173,43 +173,60 @@
     /*--------------------Меню (по клику на бургер)--------------------*/
 .header__navigation-wrap {
     width: 100%;
-    height: 100%;
+    height: 150%;
     top: 0;
     left: 0;
     background: #000000;
     opacity: 0.3;
     padding: 0;
     margin: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     display: flex;
+    overflow: hidden;
 }
 
 .header__navigation {
-    width: 66%;
-    height: 100%;
+    width: 67.7%;
+    height: 150%;
     background-color: #fff;
     top: 0;
     right: 0;
     z-index: 1;
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .header__navigation-close {
    border: none;
    background-color: #FFF;
    align-self: flex-end;
+   padding: 22px 22px 0 0;
+
+}
+
+.header__navigation-close:hover {
+    cursor: pointer;
+    opacity: 0.3;
 }
 
 .header__nav-list {
     list-style: none;
-    padding: 159px 90px;
+    padding: 103px 90px;
     display: flex;
     flex-direction: column;
     gap: 28px;
+    align-items: center;
+    margin: 0 0 514px;
+}
+
+.header__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header__nav-item-link {
@@ -221,7 +238,29 @@
 }
 
 .header__nav-item-link:hover {
-    text-decoration: underline;
+    padding-bottom: 4px;
+   border-bottom: 3px solid #000;
+}
+
+.header__nav-account-container {
+    margin: 0 auto;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+    border: 2px solid #aaa;
+    border-radius: 50px;
+    padding: 8px 12px;
+    align-self: center;
+    display: flex;
+    justify-content: baseline;
+}
+
+.header__nav-account-img {
+    padding: 0 7px 0;
+    margin: 0;
+    width: 12px;
 }
 
 }
