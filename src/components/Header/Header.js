@@ -20,9 +20,9 @@ export default function Header(){
         <div className="header__burger-line"></div>
         <div className="header__burger-line"></div>
       </button>
-      {/* Меню по клику на бургер */}
-      <div className='header__navigation-wrap header__navigation_none'></div>
-      <div className='header__navigation header__navigation_none'>
+      {/* Меню по клику на бургер header__navigation_none*/}
+      <div className='header__navigation-wrap'></div>
+      <div className='header__navigation'>
         <button className='header__navigation-close'><img src={close}></img></button>
         <nav className='header__nav'>
           <ul className='header__nav-list'>

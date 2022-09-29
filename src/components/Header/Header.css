@@ -298,4 +298,23 @@
         border-top: 3px solid #000;
         box-sizing: border-box;
     }
+
+    .header__navigation-wrap {
+        display: none;
+    }
+
+    .header__navigation {
+        width: 100%;
+        z-index: 1;
+
+    }
+
+    .header__navigation-close {
+        padding: 13px 13px 0 0;
+     }
+
+    .header__nav-list {
+        padding: 97px 10px;
+        gap: 24px;
+    }
 }
