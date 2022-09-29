@@ -9,13 +9,12 @@ import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 
 function App() {
   return (
     <div className="page">
-      <Header />
-      <Profile />
-
+      <Register />
     </div>
   );
 }
@@ -35,6 +34,11 @@ function App() {
 <SearchForm />
 MoviesCardList />
 <Footer />
+*/
+
+/* Профиль
+  <Header />
+  <Profile />
 */
 
 export default App;
