@@ -10,11 +10,17 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFound from '../NotFound/NotFound';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
   return (
     <div className="page">
-      <Register />
+      <Header />
+      <SearchForm />
+      <SavedMovies />
+      <Footer />
     </div>
   );
 }
@@ -40,5 +46,18 @@ MoviesCardList />
   <Header />
   <Profile />
 */
+
+/*Регистрация
+<Register />
+*/
+
+/* Логин 
+ <Login />
+*/
+
+/*Не найдено
+<NotFound />
+*/
+
 
 export default App;
