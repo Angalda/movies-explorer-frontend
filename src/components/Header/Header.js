@@ -1,3 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom'; 
+import { Router, Route } from "react-router"
+
 import logo from '../../images/logo.svg';
 import account from '../../images/icon-profile.svg';
 import close from '../../images/icons/close.svg';
@@ -5,9 +9,9 @@ import close from '../../images/icons/close.svg';
 export default function Header(){
   return (
     <header className="header">
-      <a href="/">
+       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
-      </a>
+      </Link>
       <nav className='header__menu'>
         <ul className='header__menu-list'>
           <li className='header__menu-item'><a href="#" className="header__menu-item-link">Фильмы</a></li>

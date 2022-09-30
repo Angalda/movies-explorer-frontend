@@ -1,4 +1,5 @@
-
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
@@ -17,10 +18,45 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 function App() {
   return (
     <div className="page">
-      <Header />
-      <SearchForm />
-      <SavedMovies />
-      <Footer />
+      <Switch>
+
+      <Route exact path="/">
+          <Header />
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Footer />
+        </Route>
+
+      <Route path="/movies">
+          <Header />
+          <SearchForm />
+          <MoviesCardList />
+          <Footer />
+        </Route>
+
+        <Route path="/saved-movies">
+          <Header />
+          <SearchForm />
+          <SavedMovies />
+          <Footer />
+        </Route>
+
+        <Route path="/profile">
+          <Header />
+          <Profile />
+        </Route>
+
+        <Route path="/signin">
+          <Login />
+        </Route>
+
+        <Route path="/signup">
+          <Register />
+        </Route>
+
+      </Switch>
     </div>
   );
 }
@@ -38,7 +74,7 @@ function App() {
 /*  Фильмы (с меню)   
 <Header />
 <SearchForm />
-MoviesCardList />
+<MoiesCardList />
 <Footer />
 */
 
@@ -57,6 +93,13 @@ MoviesCardList />
 
 /*Не найдено
 <NotFound />
+*/
+
+/* Сохраненные фильмы
+ <Header />
+  <SearchForm />
+  <SavedMovies />
+  <Footer />
 */
 
 
