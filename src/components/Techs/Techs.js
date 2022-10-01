@@ -1,4 +1,4 @@
-export default function Techs(){
+export default function Techs() {
     return (
         <div className="techs__container">
             <h3 className="techs__header">Технологии</h3>

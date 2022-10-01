@@ -22,27 +22,27 @@ export default function MoviesCardList() {
         <div className="moviesCardList">
             <div className="moviesCardList__list-wrap">
                 <ul className="moviesCardList__list">
-                    <MoviesCard picture={film1} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film2} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film3} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film4} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film5} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film6} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film7} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film8} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film9} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film10} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film11} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film12} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film13} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film14} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film15} title={'33 слова о дизайне'} duration={'1ч42м'} />
-                    <MoviesCard picture={film16} title={'33 слова о дизайне'} duration={'1ч42м'} />
+                    <MoviesCard picture={film1} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film2} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
+                    <MoviesCard picture={film3} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film4} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film5} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
+                    <MoviesCard picture={film6} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film7} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film8} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
+                    <MoviesCard picture={film9} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film10} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film11} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
+                    <MoviesCard picture={film12} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film13} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
+                    <MoviesCard picture={film14} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film15} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
+                    <MoviesCard picture={film16} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
                 </ul>
             </div>
-           <div class="moviesCardList__more">
-            <button className="moviesCardList__more-btn">Ещё</button>
-           </div>
+            <div class="moviesCardList__more">
+                <button className="moviesCardList__more-btn">Ещё</button>
+            </div>
         </div>
     )
 }

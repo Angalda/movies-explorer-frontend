@@ -57,6 +57,14 @@
     .footer__container {
         padding: 79px 30px 20px;
     }
+
+    .footer__bottom {
+        margin: 18px 0 0;
+    }
+
+    .footer__links-list {
+        gap: 20.5px;
+    }
 }
 
 @media screen and (max-width: 575.98px) {

@@ -84,7 +84,7 @@
 }
 
 .register__submit:hover {
-    opacity: 0.7px;
+    opacity: 0.7;
     cursor: pointer;
 }
 
@@ -112,8 +112,13 @@
     color: #000;
 }
 
+.register__submit-login-link {
+    color: #000;
+    text-decoration: none;
+}
+
 .register__submit-login:hover {
-    opacity: 0.7px;
+    opacity: 0.7;
     cursor: pointer;
 }
 
@@ -168,7 +173,7 @@
         font-size: 12px;
         line-height: 15px;
     }
-    
+
     .register__submit-login {
         font-size: 12px;
         line-height: 15px;

@@ -32,7 +32,7 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -0.04em;
-    padding:0;
+    padding: 0;
     margin: 70px 0 26px;
 }
 
@@ -63,7 +63,7 @@
 .about-project__one-week {
     background-color: #000;
     color: #fff;
-    
+
 }
 
 .about-project__four-week {
@@ -94,7 +94,7 @@
     .about-project__time-item {
         padding: 10px 0;
     }
-    
+
 }
 
 @media screen and (max-width: 575.98px) {
@@ -108,7 +108,7 @@
 
     .about-project__list {
         flex-direction: column;
-        
+
     }
 
     .about-project__about {
@@ -116,13 +116,13 @@
         line-height: 22px;
         padding: 0 0 28px;
         margin: 0 0 4px;
-       
+
     }
 
     .about-project__item:first-child {
         margin-right: 0px;
     }
-    
+
 
     .about-project__item-header {
         font-size: 18px;

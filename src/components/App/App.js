@@ -20,7 +20,7 @@ function App() {
     <div className="page">
       <Switch>
 
-      <Route exact path="/">
+        <Route exact path="/">
           <Header />
           <Promo />
           <AboutProject />
@@ -29,7 +29,7 @@ function App() {
           <Footer />
         </Route>
 
-      <Route path="/movies">
+        <Route path="/movies">
           <Header />
           <SearchForm />
           <MoviesCardList />

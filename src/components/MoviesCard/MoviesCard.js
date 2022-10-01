@@ -1,7 +1,9 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
 
 
-export default function MoviesCard({picture, title, duration}) {
+export default function MoviesCard({ picture, title, duration, select }) {
+    const { pathname } = useLocation();
     return (
         <li className="moviesCard">
             <div className="moviesCard__container">
@@ -9,12 +11,12 @@ export default function MoviesCard({picture, title, duration}) {
             </div>
             <div className="moviesCard__description">
                 <h2 className="moviesCard__title">{title}</h2>
-                <div className="moviesCard__contain-select">
-                    <div className="moviesCard__select"></div>
-            </div>
+                <div className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__delete'}`}>
+                    <div className={`moviesCard__select ${!select ? 'moviesCard__select_hidden' : ''}`}></div>
+                </div>
             </div>
             <div className="moviesCard__duration">{duration}</div>
-            
+
         </li>
     )
 }
