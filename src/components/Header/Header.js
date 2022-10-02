@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Router, Route } from "react-router"
 
 import logo from '../../images/logo.svg';
 import account from '../../images/icon-profile.svg';
 import close from '../../images/icons/close.svg';
 
-export default function Header() {
+export default function Header(props) {
   const { pathname } = useLocation();
   return (
-    <header className="header">
+    <header className={`header ${pathname !== '/' ? '' : 'header__background'}`}>
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
@@ -20,20 +19,20 @@ export default function Header() {
         </ul>
       </nav>
       <Link to="/profile" className="header__account-container"><img className='header__account-img' src={account} alt="icon-account" /> Аккаунт</Link>
-      <button className='header__burger-menu'>
+      <button className={`header__burger-menu ${pathname !== '/' ? '' : 'header__burger-menu-background'}`} onClick={props.onViewMenu}>
         <div className="header__burger-line"></div>
         <div className="header__burger-line"></div>
         <div className="header__burger-line"></div>
       </button>
-      {/* Меню по клику на бургер header__navigation_none*/}
-      <div className='header__navigation-wrap header__navigation_none'></div>
-      <div className='header__navigation header__navigation_none'>
-        <button className='header__navigation-close'><img src={close}></img></button>
+      {/* Меню по клику на бургер header__navigation_open*/}
+      <div className={`header__navigation-wrap ${props.isOpen ? 'header__navigation_open' : ''}`}></div>
+      <div className={`header__navigation ${props.isOpen ? 'header__navigation_open' : ''}`}>
+        <button className='header__navigation-close' onClick={props.onCloseMenu}><img src={close}></img></button>
         <nav className='header__nav'>
           <ul className='header__nav-list'>
-            <li className='header__nav-item'><a href="#" className="header__nav-item-link">Главная</a></li>
-            <li className='header__nav-item'><a href="#" className="header__nav-item-link">Фильмы</a></li>
-            <li className='header__nav-item'><a href="#" className="header__nav-item-link">Сохранённые фильмы</a></li>
+            <li className='header__nav-item'><Link to="/" className="header__nav-item-link" onClick={props.onCloseMenu}>Главная</Link></li>
+            <li className='header__nav-item'><Link to="/movies" className="header__nav-item-link" onClick={props.onCloseMenu}>Фильмы</Link></li>
+            <li className='header__nav-item'><Link to="/saved-movies" className="header__nav-item-link" onClick={props.onCloseMenu}>Сохранённые фильмы</Link></li>
           </ul>
           <a href="#" className="header__nav-account-container"><img className='header__nav-account-img' src={account} alt="icon-account" /> Аккаунт</a>
         </nav>

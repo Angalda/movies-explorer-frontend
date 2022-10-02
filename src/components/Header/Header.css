@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-.header-background {
+.header__background {
     background-color: #F3C1F8;
 }
 
@@ -102,7 +102,7 @@
     font-size: 14px;
     line-height: 16px;
     color: #000;
-    border: 2px solid #aaa;
+    border: 1px solid #aaa;
     border-radius: 50px;
     padding: 8px 12px;
 }
@@ -164,6 +164,10 @@
         align-items: center;
     }
 
+    .header__burger-menu-background {
+        background-color: #F3C1F8;
+    }
+
     .header__burger-menu:hover {
         opacity: 0.7;
         cursor: pointer;
@@ -187,7 +191,7 @@
         margin: 0;
         position: fixed;
         z-index: 1;
-        display: flex;
+        display: none;
     }
 
     .header__navigation {
@@ -198,13 +202,13 @@
         right: 0;
         z-index: 1;
         position: fixed;
-        display: flex;
         flex-direction: column;
         align-items: center;
+        display: none;
     }
 
-    .header__navigation_none {
-        display: none;
+    .header__navigation_open {
+        display: flex;
     }
 
     .header__navigation-close {

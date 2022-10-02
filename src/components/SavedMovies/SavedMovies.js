@@ -8,7 +8,7 @@ export default function MoviesCardList() {
     return (
         <div className="moviesCardList">
             <div className="moviesCardList__list-wrap">
-                <ul className="moviesCardList__list">
+                <ul className="moviesCardList__list moviesCardList__list_saved">
                     <MoviesCard picture={film1} title={'33 слова о дизайне'} duration={'1ч42м'} />
                     <MoviesCard picture={film2} title={'33 слова о дизайне'} duration={'1ч42м'} />
                     <MoviesCard picture={film3} title={'33 слова о дизайне'} duration={'1ч42м'} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
@@ -16,12 +16,22 @@ import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function handleBurgerMenuClick() {
+    setIsMenuOpen(true);
+  }
+
+  function handleCloseMenuClick() {
+    setIsMenuOpen(false);
+  }
+
   return (
     <div className="page">
       <Switch>
 
         <Route exact path="/">
-          <Header />
+          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
           <Promo />
           <AboutProject />
           <Techs />
@@ -30,21 +40,21 @@ function App() {
         </Route>
 
         <Route path="/movies">
-          <Header />
+          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
           <SearchForm />
           <MoviesCardList />
           <Footer />
         </Route>
 
         <Route path="/saved-movies">
-          <Header />
+          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
           <SearchForm />
           <SavedMovies />
           <Footer />
         </Route>
 
         <Route path="/profile">
-          <Header />
+          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
           <Profile />
         </Route>
 
