@@ -1,9 +1,9 @@
 import icon from '../../images/icons/arrow.svg';
 import student from '../../images/photo-student.jpg';
 
-export default function AboutMe() {
+export default function AboutMe(){
     return (
-        <div className="aboutMe__container">
+        <section className="aboutMe__container">
             <h3 className="aboutMe__header">Студент</h3>
             <div className="aboutMe__about">
                 <div className="aboutMe__about-text">
@@ -18,14 +18,14 @@ export default function AboutMe() {
                 </div>
                 <img src={student} className="aboutMe__about-photo" />
             </div>
-
+            
             <p className="aboutMe__portfolio-title">Портфолио</p>
             <ul className="aboutMe__portfolio">
-                <li className="aboutMe__portfolio-item"><a href="" className="aboutMe__portfolio-link">Статичный сайт</a><img src={icon} className="aboutMe__portfolio-icon"></img></li>
-                <li className="aboutMe__portfolio-item"><a href="https://angalda.github.io/russian-travel" className="aboutMe__portfolio-link">Адаптивный сайт</a><img src={icon} className="aboutMe__portfolio-icon"></img></li>
-                <li className="aboutMe__portfolio-item"><a href="https://angalda.github.io/mesto" className="aboutMe__portfolio-link">Одностраничное приложение</a><img src={icon} className="aboutMe__portfolio-icon"></img></li>
+            <a href="https://angalda.github.io/how-to-learn" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Статичный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
+            <a href="https://angalda.github.io/russian-travel" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Адаптивный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
+            <a href="https://angalda.github.io/mesto" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Одностраничное приложение</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
             </ul>
 
-        </div>
+        </section>
     )
 }

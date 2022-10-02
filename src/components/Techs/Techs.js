@@ -1,6 +1,6 @@
 export default function Techs() {
     return (
-        <div className="techs__container">
+        <section className="techs__container">
             <h3 className="techs__header">Технологии</h3>
             <p className="techs__title">7 технологий</p>
             <p className="techs__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
@@ -13,6 +13,6 @@ export default function Techs() {
                 <li className="techs__item">Express.js</li>
                 <li className="techs__item">MongoDB</li>
             </ul>
-        </div>
+        </section>
     )
 }

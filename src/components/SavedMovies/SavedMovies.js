@@ -6,7 +6,7 @@ import film3 from "../../images/films/pic3.jpg";
 
 export default function MoviesCardList() {
     return (
-        <div className="moviesCardList">
+        <section className="moviesCardList">
             <div className="moviesCardList__list-wrap">
                 <ul className="moviesCardList__list moviesCardList__list_saved">
                     <MoviesCard picture={film1} title={'33 слова о дизайне'} duration={'1ч42м'} />
@@ -15,6 +15,6 @@ export default function MoviesCardList() {
                 </ul>
             </div>
 
-        </div>
+        </section>
     )
 }

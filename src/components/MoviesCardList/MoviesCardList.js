@@ -19,8 +19,8 @@ import film16 from "../../images/films/pic16.jpg";
 
 export default function MoviesCardList() {
     return (
-        <div className="moviesCardList">
-            <div className="moviesCardList__list-wrap">
+        <section className="moviesCardList">
+       
                 <ul className="moviesCardList__list">
                     <MoviesCard picture={film1} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
                     <MoviesCard picture={film2} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
@@ -39,10 +39,10 @@ export default function MoviesCardList() {
                     <MoviesCard picture={film15} title={'33 слова о дизайне'} duration={'1ч42м'} select={false} />
                     <MoviesCard picture={film16} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
                 </ul>
-            </div>
+        
             <div class="moviesCardList__more">
                 <button className="moviesCardList__more-btn">Ещё</button>
             </div>
-        </div>
+        </section>
     )
 }

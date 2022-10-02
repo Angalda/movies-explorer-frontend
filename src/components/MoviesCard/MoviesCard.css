@@ -56,12 +56,14 @@
 .moviesCard__contain-select {
     width: 16px;
     height: 16px;
-    background-color: #fff;
+    background-color: #F9F9F9;
     border-radius: 100%;
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 3px 5px #aaaaaa63;
     position: relative;
     margin: 0 12px 0 0;
     top: 5px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
 }
 
 .moviesCard__delete {
@@ -123,7 +125,7 @@
     }
 
     .moviesCard__container{
-        width: 339px;
+        max-width: 339px;
 
     }
 }
@@ -131,14 +133,11 @@
 @media screen and (max-width: 575.98px) {
     .moviesCard__duration {
         padding: 11px 12px 13px;
+        max-width: 300px;
     }
 
     .moviesCard__title {
         padding: 10.5px 12px 0;
-    }
-
-    .moviesCard__img {
-        max-width: 300px;
     }
     
 }

@@ -5,9 +5,9 @@ export default function Footer() {
             <div className="footer__bottom">
                 <p className="footer__copyright">© 2020</p>
                 <ul className="footer__links-list">
-                    <li className="footer__link-item"><a href="https://practicum.yandex.ru" className="footer__link">Яндекс.Практикум</a></li>
-                    <li className="footer__link-item"><a href="https://angalda.github.io" className="footer__link">Github</a></li>
-                    <li className="footer__link-item"><a href="https://www.facebook.com" className="footer__link">Facebook</a></li>
+                    <li className="footer__link-item"><a href="https://practicum.yandex.ru" target="blank" className="footer__link">Яндекс.Практикум</a></li>
+                    <li className="footer__link-item"><a href="https://angalda.github.io" target="blank" className="footer__link">Github</a></li>
+                    <li className="footer__link-item"><a href="https://www.facebook.com" target="blank" className="footer__link">Facebook</a></li>
 
                 </ul>
             </div>

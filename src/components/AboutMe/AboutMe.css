@@ -123,6 +123,11 @@
     letter-spacing: -0.04em;
 }
 
+.aboutMe__portfolio-text {
+    padding: 0;
+    margin: 0;
+}
+
 .aboutMe__portfolio-icon {
     padding: 0;
     margin: 0;

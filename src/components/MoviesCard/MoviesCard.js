@@ -11,9 +11,9 @@ export default function MoviesCard({ picture, title, duration, select }) {
             </div>
             <div className="moviesCard__description">
                 <h2 className="moviesCard__title">{title}</h2>
-                <div className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__delete'}`}>
+                <button className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__delete'}`}>
                     <div className={`moviesCard__select ${!select ? 'moviesCard__select_hidden' : ''}`}></div>
-                </div>
+                </button>
             </div>
             <div className="moviesCard__duration">{duration}</div>
 

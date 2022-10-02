@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
+import Main from '../Main/Main'
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -32,30 +33,38 @@ function App() {
 
         <Route exact path="/">
           <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Promo />
-          <AboutProject />
-          <Techs />
-          <AboutMe />
+          <Main>
+            <Promo />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+          </Main>
           <Footer />
         </Route>
 
         <Route path="/movies">
           <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <SearchForm />
-          <MoviesCardList />
+          <Main>
+            <SearchForm />
+            <MoviesCardList />
+          </Main>
           <Footer />
         </Route>
 
         <Route path="/saved-movies">
           <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <SearchForm />
-          <SavedMovies />
+          <Main>
+            <SearchForm />
+            <SavedMovies />
+          </Main>
           <Footer />
         </Route>
 
         <Route path="/profile">
           <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Profile />
+          <Main>
+            <Profile />
+          </Main>
         </Route>
 
         <Route path="/signin">
