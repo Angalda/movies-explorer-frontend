@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+.header_hidden {
+    display: none;
+}
+
 .header__background {
     background-color: #F3C1F8;
 }

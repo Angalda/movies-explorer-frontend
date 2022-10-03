@@ -67,7 +67,7 @@
 
     .moviesCardList__list {
         grid-template-columns: 1fr;
-        padding: 40px 0 0;
+        padding: 38px 0 0;
         gap: 20px;
     }
 

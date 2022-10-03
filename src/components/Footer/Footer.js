@@ -1,6 +1,10 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 export default function Footer() {
+    const { pathname } = useLocation();
     return (
-        <footer className="footer__container">
+        <footer className={`footer__container  ${pathname === '/profile' ? 'footer__container_hidden' : ''} ${pathname === '/signup' ? 'footer__container_hidden' : ''} ${pathname === '/signin' ? 'footer__container_hidden' : ''}`}>
             <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
             <div className="footer__bottom">
                 <p className="footer__copyright">© 2020</p>

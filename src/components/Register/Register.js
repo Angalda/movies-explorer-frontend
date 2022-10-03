@@ -27,7 +27,7 @@ export default function Register() {
 
           <div className='register__login'>
             <p className='register__text-login'>Уже зарегистрированы?</p>
-            <button className="register__submit-login" type="submit"><Link to="/signin" className="register__submit-login-link">Войти</Link></button>
+            <button className="register__submit-login" type="button"><Link to="/signin" className="register__submit-login-link">Войти</Link></button>
           </div>
         </form>
       </div>

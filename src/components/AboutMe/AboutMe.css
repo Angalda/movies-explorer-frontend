@@ -94,8 +94,6 @@
 }
 
 .aboutMe__portfolio-item {
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #E8E8E8;
     padding: 20px 0 19px;
 }
@@ -116,6 +114,8 @@
 
 
 .aboutMe__portfolio-link {
+    display: flex;
+    justify-content: space-between;
     text-decoration: none;
     color: #000;
     font-size: 30px;
@@ -183,6 +183,18 @@
 
 }
 
+@media screen and (max-width: 699.98px) {
+    .aboutMe__about {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        margin: 40px 0 0;
+    }
+
+    .aboutMe__name {
+        margin: 40px 0 0;
+    }
+}
+
 @media screen and (max-width: 575.98px) {
     .aboutMe__container {
         padding: 70px 14px;
@@ -236,7 +248,6 @@
     .aboutMe__portfolio-link {
         font-size: 18px;
         line-height: 28px;
-        max-width: 250px;
     }
 
     .aboutMe__portfolio-icon {

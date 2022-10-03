@@ -6,6 +6,7 @@
     background: #FDFDFD;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+    width: 100%;
 }
 
 .moviesCard__container {
@@ -14,6 +15,7 @@
     margin: 0;
     background: #FDFDFD;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .moviesCard__img {
@@ -27,11 +29,11 @@
 
 .moviesCard__description {
     display: flex;
-    padding: 0;
+    padding: 10.5px 0 0;
     margin: 0;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-
+    align-items: center;
 }
 
 .moviesCard__title {
@@ -39,7 +41,7 @@
     font-size: 13px;
     line-height: 16px;
     max-width: 206px;
-    padding: 10px 12px 0;
+    padding: 0 12px 0;
     margin: 0;
     background: #FDFDFD;
 }
@@ -49,7 +51,7 @@
     line-height: 13px;
     align-items: center;
     color: #A0A0A0;
-    padding: 12px 12px 14px;
+    padding: 12px;
     box-sizing: border-box;
 }
 
@@ -61,7 +63,6 @@
     box-shadow: 0px 3px 5px #aaaaaa63;
     position: relative;
     margin: 0 12px 0 0;
-    top: 5px;
     box-sizing: border-box;
     border: 2px solid #fff;
 }
@@ -69,12 +70,15 @@
 .moviesCard__delete {
     width: 8px;
     height: 8px;
+    background-size: 8px 8px;
     background-image: url(../../images/icons/delete.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center;
+    background-color: #fff;
     position: relative;
-    margin: 0 12px 0 0;
-    top: 5px;
+    margin: 0 14px 0 0;
+    border: none;
+    box-shadow: none;
 }
 
 .moviesCard__delete:hover {
@@ -120,17 +124,17 @@
         padding: 11px 12px 14px;
     }
 
-    .moviesCard__title {
-        padding: 11px 12px 0;
-    }
-
     .moviesCard__container{
         max-width: 339px;
-
     }
 }
 
 @media screen and (max-width: 575.98px) {
+
+    .moviesCard__description {
+        padding: 0;
+    }
+    
     .moviesCard__duration {
         padding: 11px 12px 13px;
         max-width: 300px;

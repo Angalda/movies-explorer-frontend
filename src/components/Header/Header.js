@@ -8,7 +8,7 @@ import close from '../../images/icons/close.svg';
 export default function Header(props) {
   const { pathname } = useLocation();
   return (
-    <header className={`header ${pathname !== '/' ? '' : 'header__background'}`}>
+      <header className={`header ${pathname !== '/' ? '' : 'header__background'} ${pathname === '/signup' ?  'header_hidden' : '' } ${pathname === '/signin' ?  'header_hidden' : '' } `}>
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
@@ -19,7 +19,7 @@ export default function Header(props) {
         </ul>
       </nav>
       <Link to="/profile" className="header__account-container"><img className='header__account-img' src={account} alt="icon-account" /> Аккаунт</Link>
-      <button className={`header__burger-menu ${pathname !== '/' ? '' : 'header__burger-menu-background'}`} onClick={props.onViewMenu}>
+      <button type="button" className={`header__burger-menu ${pathname !== '/' ? '' : 'header__burger-menu-background'}`} onClick={props.onViewMenu}>
         <div className="header__burger-line"></div>
         <div className="header__burger-line"></div>
         <div className="header__burger-line"></div>
@@ -27,7 +27,7 @@ export default function Header(props) {
       {/* Меню по клику на бургер header__navigation_open*/}
       <div className={`header__navigation-wrap ${props.isOpen ? 'header__navigation_open' : ''}`}></div>
       <div className={`header__navigation ${props.isOpen ? 'header__navigation_open' : ''}`}>
-        <button className='header__navigation-close' onClick={props.onCloseMenu}><img src={close}></img></button>
+        <button type="button" className='header__navigation-close' onClick={props.onCloseMenu}><img src={close}></img></button>
         <nav className='header__nav'>
           <ul className='header__nav-list'>
             <li className='header__nav-item'><Link to="/" className="header__nav-item-link" onClick={props.onCloseMenu}>Главная</Link></li>
@@ -39,8 +39,8 @@ export default function Header(props) {
       </div>
 
       <div className='header__login'>
-        <button className='header__signup-btn'>Регистация</button>
-        <button className='header__signin-btn'>Войти</button>
+        <button type="button" className='header__signup-btn'>Регистация</button>
+        <button type="button" className='header__signin-btn'>Войти</button>
       </div>
     </header>
   )

@@ -21,9 +21,9 @@ export default function AboutMe(){
             
             <p className="aboutMe__portfolio-title">Портфолио</p>
             <ul className="aboutMe__portfolio">
-            <a href="https://angalda.github.io/how-to-learn" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Статичный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
-            <a href="https://angalda.github.io/russian-travel" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Адаптивный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
-            <a href="https://angalda.github.io/mesto" target="blank" className="aboutMe__portfolio-link"><li className="aboutMe__portfolio-item"><p className="aboutMe__portfolio-text">Одностраничное приложение</p><img src={icon}className="aboutMe__portfolio-icon"></img></li></a>
+            <li className="aboutMe__portfolio-item"><a href="https://angalda.github.io/how-to-learn/" target="blank" className="aboutMe__portfolio-link"><p className="aboutMe__portfolio-text">Статичный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></a></li>
+            <li className="aboutMe__portfolio-item"><a href="https://angalda.github.io/russian-travel" target="blank" className="aboutMe__portfolio-link"><p className="aboutMe__portfolio-text">Адаптивный сайт</p><img src={icon}className="aboutMe__portfolio-icon"></img></a></li>
+            <li className="aboutMe__portfolio-item"><a href="https://angalda.github.io/mesto" target="blank" className="aboutMe__portfolio-link"><p className="aboutMe__portfolio-text">Одностраничное приложение</p><img src={icon}className="aboutMe__portfolio-icon"></img></a></li>
             </ul>
 
         </section>

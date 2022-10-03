@@ -41,7 +41,7 @@ export default function MoviesCardList() {
                 </ul>
         
             <div class="moviesCardList__more">
-                <button className="moviesCardList__more-btn">Ещё</button>
+                <button type="button" className="moviesCardList__more-btn">Ещё</button>
             </div>
         </section>
     )

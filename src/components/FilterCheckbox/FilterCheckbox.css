@@ -71,7 +71,9 @@
 }
 
 @media screen and (max-width: 575.98px) {
-
+    .filterCheckbox {
+        margin: 30px 0 0;
+    }
 
     .filterCheckbox__label {
         margin: 0 0 0 50px;

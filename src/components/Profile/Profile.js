@@ -14,7 +14,7 @@ export default function Profile() {
           <input className="profile__input" type="text" name="email" required placeholder="  pochta@yandex.ru"></input>
         </div>
         <button className="profile__submit-edit" type="submit">Редактировать</button>
-        <button className="profile__submit-logout" type="submit"><Link to="/signin" className="profile__submit-logout-link">Выйти из аккаунта</Link></button>
+        <button className="profile__submit-logout" type="button"><Link to="/signin" className="profile__submit-logout-link">Выйти из аккаунта</Link></button>
       </form>
 
     </section>

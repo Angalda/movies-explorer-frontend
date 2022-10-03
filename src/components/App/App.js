@@ -29,42 +29,28 @@ function App() {
 
   return (
     <div className="page">
+      <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
+      <Main>
       <Switch>
-
         <Route exact path="/">
-          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Main>
             <Promo />
             <AboutProject />
             <Techs />
             <AboutMe />
-          </Main>
-          <Footer />
         </Route>
 
         <Route path="/movies">
-          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Main>
             <SearchForm />
             <MoviesCardList />
-          </Main>
-          <Footer />
         </Route>
 
         <Route path="/saved-movies">
-          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Main>
             <SearchForm />
             <SavedMovies />
-          </Main>
-          <Footer />
         </Route>
 
         <Route path="/profile">
-          <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
-          <Main>
-            <Profile />
-          </Main>
+          <Profile />
         </Route>
 
         <Route path="/signin">
@@ -75,7 +61,10 @@ function App() {
           <Register />
         </Route>
 
-      </Switch>
+        </Switch>
+      </Main>
+      <Footer />
+
     </div>
   );
 }
