@@ -1,0 +1,182 @@
+.register__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 70px 70px 70px;
+    margin: 0 auto;
+    max-width: 1280px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.register__logo-link {
+    align-self: flex-start;
+}
+
+.register__logo-link:hover {
+    opacity: 0.7px;
+    cursor: pointer;
+}
+
+.register__title {
+    margin: 37px 0 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.register__form {
+    margin: 40px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.register__input-name {
+    font-size: 10px;
+    line-height: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.register__input {
+    border: none;
+    background: #F9F9F9;
+    border-radius: 8px;
+    width: 396px;
+    padding: 15px 15px 16px;
+    margin: 10px 0 20px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.register__input-password {
+    margin: 8px 0 10px;
+}
+
+.register__input-error {
+    color: #FF4062;
+}
+
+.register__error {
+    color: #FF4062;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.register__submit {
+    margin: 69px 0 0;
+    width: 396px;
+    background-color: #000;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 13px 0 15px;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.register__submit:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
+.register__login {
+    width: 396px;
+    display: flex;
+    justify-content: center;
+}
+
+.register__text-login {
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+}
+
+.register__submit-login {
+    margin: 16px 0 0;
+    border: none;
+    padding: 0 0 0 6px;
+    background-color: #FFF;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+}
+
+.register__submit-login-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.register__submit-login:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991.98px) {
+    .register__container {
+        padding: 232px 70px 232px;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .register__container {
+        padding: 56px 30px 30px;
+    }
+
+    .register__wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .register__logo-link {
+        align-self: center;
+    }
+
+    .register__title {
+        align-self: center;
+        margin: 47px 0 0;
+    }
+
+    .register__form {
+        margin: 80px 0 0;
+    }
+
+    .register__input {
+        width: 260px;
+        font-weight: 500;
+    }
+
+    .register__submit {
+        width: 260px;
+        margin: 156px 0 0;
+        font-size: 12px;
+        line-height: 15px;
+        padding: 15px 0 14px;
+    }
+
+    .register__login {
+        width: 260px;
+    }
+
+    .register__text-login {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .register__submit-login {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+}

@@ -1,0 +1,332 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 70px;
+    margin: 0 auto;
+    max-width: 1280px;
+    box-sizing: border-box;
+}
+
+.header_hidden {
+    display: none;
+}
+
+.header__background {
+    background-color: #F3C1F8;
+}
+
+.header__logo {
+    margin: 0;
+    padding: 0;
+    width: 38px;
+}
+
+.header__logo:hover {
+    opacity: 0.7;
+}
+
+.header__login {
+    display: none;
+}
+
+.header__signup-btn {
+    padding: 8px 20px;
+    margin: 0 12px 0 0;
+    border: none;
+    background-color: #F3C1F8;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+}
+
+.header__signup-btn:hover {
+    background-color: #f2b8fa;
+    cursor: pointer;
+}
+
+.header__signin-btn {
+    padding: 8px 20px;
+    margin: 0;
+    border: none;
+    background-color: #000;
+    border-radius: 3px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.header__signin-btn:hover {
+    background-color: #663d66f1;
+    cursor: pointer;
+}
+
+.header__menu {
+    display: block;
+}
+
+.header__menu_hidden {
+    display: none;
+}
+
+.header__menu-list {
+    padding: 0 0 0 65px;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 16px;
+}
+
+.header__menu-item {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.header__menu-item:hover {
+    opacity: 0.7;
+}
+
+.header__menu-item-link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__account-container {
+    margin: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+    border: 1px solid #aaa;
+    border-radius: 50px;
+    padding: 8px 12px;
+}
+
+.header__account {
+    padding: 0;
+    margin: 0;
+    width: 12px;
+}
+
+.header__account-container:hover {
+    opacity: 0.7;
+}
+
+.header__burger-menu {
+    display: none;
+}
+
+.header__burger-line {
+    width: 28px;
+    border-top: 3px solid #000;
+    box-sizing: border-box;
+}
+
+.header__navigation-wrap {
+    display: none;
+}
+
+.header__navigation {
+    display: none;
+}
+
+@media screen and (max-width: 991.98px) {
+    .header {
+        padding: 18px 30px;
+    }
+
+    .header__signup-btn {
+        margin: 0 10px 0 0;
+    }
+
+    .header__menu {
+        display: none;
+    }
+
+    .header__account-container {
+        display: none;
+    }
+
+    .header__burger-menu {
+        padding: 2px 0 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        background-color: #FFF;
+        width: 44px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__burger-menu-background {
+        background-color: #F3C1F8;
+    }
+
+    .header__burger-menu:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .header__burger-line {
+        height: 10px;
+        width: 28px;
+    }
+
+    /*--------------------Меню (по клику на бургер)--------------------*/
+
+    .header__navigation-wrap {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #000000;
+        opacity: 0.3;
+        padding: 0;
+        margin: 0;
+        position: fixed;
+        z-index: 1;
+        display: none;
+    }
+
+    .header__navigation {
+        width: 67.7%;
+        height: 100%;
+        background-color: #fff;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+    .header__navigation_open {
+        display: flex;
+    }
+
+    .header__navigation-close {
+        border: none;
+        background-color: #FFF;
+        align-self: flex-end;
+        padding: 22px 22px 0 0;
+
+    }
+
+    .header__navigation-close:hover {
+        cursor: pointer;
+        opacity: 0.3;
+    }
+
+    .header__nav-list {
+        list-style: none;
+        padding: 103px 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+        margin: 0;
+
+    }
+
+    .header__nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 90px;
+        height: 100%;
+    }
+
+    .header__nav-item-link {
+        font-weight: 500;
+        text-decoration: none;
+        color: #000;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .header__nav-item-link:hover {
+        padding-bottom: 4px;
+        border-bottom: 3px solid #000;
+    }
+
+    .header__nav-account-container {
+        margin: 0 auto;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000;
+        border: 2px solid #aaa;
+        border-radius: 50px;
+        padding: 8px 12px;
+        align-self: center;
+        display: flex;
+        justify-content: baseline;
+    }
+
+    .header__nav-account-img {
+        padding: 0 7px 0;
+        margin: 0;
+        width: 12px;
+    }
+
+}
+
+@media screen and (max-width: 575.98px) {
+    .header {
+        padding: 18px 14px;
+    }
+
+    .header__signup-btn {
+        font-size: 10px;
+        padding: 5px 12px;
+        margin: 0 5px 0 0;
+    }
+
+    .header__signin-btn {
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+
+    .header__burger-menu {
+        width: 40px;
+    }
+
+    .header__burger-line {
+        width: 22px;
+        height: 9px;
+        border-top: 3px solid #000;
+        box-sizing: border-box;
+    }
+
+    .header__navigation-wrap {
+        display: none;
+    }
+
+    .header__navigation {
+        width: 100%;
+        z-index: 1;
+
+    }
+
+    .header__navigation-close {
+        padding: 13px 13px 0 0;
+    }
+
+    .header__nav-list {
+        padding: 97px 10px;
+        gap: 24px;
+    }
+}

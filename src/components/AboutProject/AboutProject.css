@@ -1,0 +1,149 @@
+.about-project__container {
+    background-color: #FFF;
+    margin: 0 auto;
+    padding: 110px 70px;
+    border: none;
+    max-width: 1280px;
+    box-sizing: border-box;
+}
+
+.about-project__about {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #000;
+    padding: 0 0 23px;
+    margin: 0;
+}
+
+.about-project__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.about-project__item:first-child {
+    margin-right: 40px;
+}
+
+.about-project__item-header {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    padding: 0;
+    margin: 70px 0 26px;
+}
+
+.about-project__item-text {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.about-project__time {
+    display: grid;
+    gap: 0;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 4fr;
+    padding: 0;
+    margin: 110px 0 0;
+}
+
+.about-project__time-item {
+    margin: 0;
+    padding: 9px 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.about-project__one-week {
+    background-color: #000;
+    color: #fff;
+
+}
+
+.about-project__four-week {
+    background-color: #F2F2F2;
+}
+
+
+@media screen and (max-width: 991.98px) {
+    .about-project__item-text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-project__container {
+        padding: 90px 50px;
+
+    }
+
+    .about-project__item-header {
+        margin: 70px 0 22px;
+    }
+
+    .about-project__time {
+        margin: 93px 0 0;
+        grid-template-columns: 1fr 3.7fr;
+    }
+
+    .about-project__time-item {
+        padding: 10px 0;
+    }
+
+}
+
+@media screen and (max-width: 575.98px) {
+    .about-project__container {
+        padding: 70px 18px;
+    }
+
+    .about-project__item-header {
+        margin: 56px 0 16px
+    }
+
+    .about-project__list {
+        flex-direction: column;
+
+    }
+
+    .about-project__about {
+        font-size: 18px;
+        line-height: 22px;
+        padding: 0 0 28px;
+        margin: 0 0 4px;
+
+    }
+
+    .about-project__item:first-child {
+        margin-right: 0px;
+    }
+
+
+    .about-project__item-header {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project__item-text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-project__time {
+        margin: 60px 0 0;
+        grid-template-columns: 1fr 1.8fr;
+    }
+
+    .about-project__time-item {
+        font-size: 11px;
+        line-height: 13px;
+        padding: 11px 0;
+    }
+
+
+}

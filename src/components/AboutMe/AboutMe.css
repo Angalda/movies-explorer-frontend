@@ -1,0 +1,256 @@
+.aboutMe__container {
+    background-color: #FFF;
+    margin: 0 auto;
+    padding: 110px 70px 125px;
+    border: none;
+    max-width: 1280px;
+    box-sizing: border-box;
+}
+
+.aboutMe__header {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #000;
+    padding: 0 0 23px;
+    margin: 0;
+}
+
+.aboutMe__about {
+    padding: 0;
+    margin: 66px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutMe__about-text {
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+}
+
+.aboutMe__name {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+}
+
+.aboutMe__brief {
+    padding: 0;
+    margin: 18px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.aboutMe__text {
+    padding: 0;
+    margin: 26px 0 0;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.aboutMe__social-links {
+    padding: 0;
+    margin: 99px 0 0;
+    display: flex;
+    gap: 20px;
+}
+
+.aboutMe__social-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.aboutMe__social-link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.aboutMe__about-photo {
+    max-width: 270px;
+    border-radius: 10px;
+}
+
+.student__portfolio-title {
+    padding: 0;
+    margin: 100px 0 0;
+    font-size: 18px;
+    line-height: 20px;
+    color: #A0A0A0;
+}
+
+.aboutMe__portfolio {
+    padding: 0;
+    margin: 50px 0 0;
+    list-style-type: none;
+}
+
+.aboutMe__portfolio-item {
+    border-bottom: 1px solid #E8E8E8;
+    padding: 20px 0 19px;
+}
+
+.aboutMe__portfolio-item:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.aboutMe__portfolio-item:first-child {
+    padding: 0 0 20px;
+}
+
+.aboutMe__portfolio-item:last-child {
+    border: none;
+    padding: 20px 0 0;
+}
+
+
+.aboutMe__portfolio-link {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #000;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -0.04em;
+}
+
+.aboutMe__portfolio-text {
+    padding: 0;
+    margin: 0;
+}
+
+.aboutMe__portfolio-icon {
+    padding: 0;
+    margin: 0;
+    width: 29px;
+}
+
+
+@media screen and (max-width: 991.98px) {
+    .aboutMe__container {
+        padding: 90px 50px;
+    }
+
+    .aboutMe__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .aboutMe__brief {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 0;
+    }
+
+    .aboutMe__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 20px 0 0;
+    }
+
+    .aboutMe__social-links {
+        margin: 87px 0 0;
+    }
+
+    .aboutMe__about-photo {
+        max-width: 255px;
+    }
+
+    .aboutMe__about-text {
+        max-width: 364px;
+    }
+
+    .aboutMe__portfolio-title {
+        margin: 90px 0 0;
+    }
+
+    .aboutMe__portfolio-link {
+        font-size: 28px
+    }
+
+    .aboutMe__portfolio-icon {
+        width: 27px;
+    }
+
+}
+
+@media screen and (max-width: 699.98px) {
+    .aboutMe__about {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        margin: 40px 0 0;
+    }
+
+    .aboutMe__name {
+        margin: 40px 0 0;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .aboutMe__container {
+        padding: 70px 14px;
+    }
+
+    .aboutMe__header {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .aboutMe__name {
+        margin: 40px 0 0;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .aboutMe__brief {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutMe__about {
+        padding: 0;
+        margin: 40px 0 0;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
+
+
+    .aboutMe__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+
+    .aboutMe__social-links {
+        margin: 69px 0 0;
+    }
+
+    .aboutMe__portfolio-title {
+        margin: 69px 0 0;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .aboutMe__portfolio {
+        margin: 40px 0 0;
+    }
+
+    .aboutMe__portfolio-link {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .aboutMe__portfolio-icon {
+        width: 18px;
+    }
+}
