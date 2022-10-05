@@ -15,6 +15,8 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import {MoviesApi} from '../../utils/moviesApi';
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
