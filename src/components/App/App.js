@@ -15,23 +15,14 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import {MoviesApi} from '../../utils/moviesApi';
+import {MoviesApi} from '../../utils/MoviesApi';
 
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  function handleBurgerMenuClick() {
-    setIsMenuOpen(true);
-  }
-
-  function handleCloseMenuClick() {
-    setIsMenuOpen(false);
-  }
 
   return (
     <div className="page">
-      <Header onViewMenu={handleBurgerMenuClick} isOpen={isMenuOpen} onCloseMenu={handleCloseMenuClick}/>
+      <Header />
       <Main>
       <Switch>
         <Route exact path="/">
