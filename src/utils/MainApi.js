@@ -46,6 +46,16 @@ export function login(password, email) {
 
 };
 
+//Получаем с сервера информацию о пользователе
+export function getProfile() {
+  return fetch(`${this._baseUrl}/users/me`, {
+    headers: this._headers,
+    credentials: 'include',
+  })
+    .then(this._checkResponse)
+}
+
+
 export function checkToken(jwt) {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
@@ -91,7 +101,7 @@ export function saveMovie (movie) {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     credentials: 'include',
     body: JSON.stringify(movie),
@@ -104,7 +114,7 @@ export function deleteMovie (id) {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     credentials: 'include',
   })

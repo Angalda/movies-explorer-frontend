@@ -63,6 +63,10 @@
     line-height: 16px;
 }
 
+profile__submit-edit_hidden {
+    opacity: 0.3;
+}
+
 .profile__submit-edit:hover {
     cursor: pointer;
     opacity: 0.7;
