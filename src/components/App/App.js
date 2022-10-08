@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import {Route, Switch, Routes, useLocation, useHistory} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurentUserContext';
 import * as mainApi from "../../utils/MainApi";
 
@@ -17,151 +17,185 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import {MoviesApi} from '../../utils/MoviesApi';
+import { MoviesApi } from '../../utils/MoviesApi';
 
 
 function App() {
-  const [isloggedIn, setIsLoggedIn] = useState(false);;
-  const [currentUser, setCurrentUser] = useState([]);
-  const [allMovies, setAllMovies] = useState([]);
+  const loggedIn = true;
+  const [authorized, setAuthorized] = useState(false);
+  const [savedMoviesList, setSavedMoviesList] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+  const [message, setMessage] = useState("");
+  const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
+  const [isSymbol, setIsSymbol] = useState(false);
   const history = useHistory();
-
-  
-  useEffect(() => {
-    if (isloggedIn) {
-        mainApi.getProfile()
-            .then(
-                ([userData, allMoviesList]) => {
-                    setCurrentUser(userData.data);
-                    setAllMovies(allMoviesList.data);
-                })
-            .catch((err) => console.log(err))
-    }
-
-}, [isloggedIn]);
+  const {pathname} = useLocation();
 
   useEffect(() => {
-
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      mainApi.checkToken(jwt)
+    if (authorized) {
+      mainApi.getProfile()
         .then((res) => {
-          if (res) {
-            setIsLoggedIn(true);
-          }
+          setCurrentUser(res.data)
         })
         .catch((err) => {
           console.log(err)
         })
     }
+  }, [authorized])
+
+  useEffect(() => {
+      const jwt = localStorage.getItem("jwt")
+      if (jwt) {
+          mainApi
+              .getProfile()
+              .then((res) => {
+                  if (res) {
+                      setAuthorized(true)
+                  }
+              })
+              .catch((err) => {
+                  console.log(err)
+              })
+      }
   }, [history])
 
   function checkToken() {
-    if (localStorage.getItem("jwt")) {
-      const jwt = localStorage.getItem("jwt");
-      if (jwt) {
-        mainApi.checkToken(jwt)
+      if (localStorage.getItem("jwt")) {
+          const jwt = localStorage.getItem("jwt")
+          if (jwt) {
+              mainApi
+                  .checkToken(jwt)
+                  .then((data) => {
+                      if (data) {
+                          setAuthorized(true);
+                          setCurrentUser(data);
+                      }
+                  })
+                  .catch((err) => {
+
+                      if (err === 401) {
+                          setAuthorized(false)
+                          console.log("401 - Токен не передан или передан не в том формате")
+                      }
+                      console.log("401 - Переданный токен не корректен")
+
+                  })
+          }
+          if (!jwt) {
+              setAuthorized(false)
+          }
+      }
+  }
+
+  function handleRegister(name, email, password) {
+      mainApi
+          .register(name, email, password)
           .then((res) => {
-            if (res) {
-              setIsLoggedIn(true);
-              setCurrentUser(res);
-            }
+              if (res) {
+                  handleLogin(password, email)
+              }
           })
           .catch((err) => {
-            setIsLoggedIn(false);
-            if (err === 400) { console.log("Токен не передан или передан не в том формате") }
-            else if (err === 401) { console.log("Переданный токен некорректен ") }
+             // setInfoTooltipOpen(true)
+             // setIsSymbol(false)
+              setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+              if (err === 400) {
+                  console.log("400 - некорректно заполнено одно из полей");
+              }
+
           })
-      }
-      if (!jwt) { setIsLoggedIn(false);}
-    }
   }
 
-  //Регистрация и авторизация
-  function handleRegister(name, email, password) {
-    return mainApi.register(name, email, password)
-        .then((res) => {
-            if (res) {handleLogin(email, password)}
-        })
-        .catch((err) => {
-            if (err.status === 400) { console.log("400: не передано одно из полей"); }
-        });
-}
+  function handleLogin(email, password) {
+      mainApi
+          .login(email, password)
+          .then((data) => {
+              if (data.token) {
+                  localStorage.setItem("jwt", data.token)
+                  handlePageLogin();
+                  history.push("/movies");
+              }
 
-function handleLogin(password, email) {
-    return mainApi.login(password, email)
-        .then((res) => {
-            localStorage.setItem("jwt", res.token);
-            handlePageLogin()
-            history.push("/movies");
-        })
-        .catch((err) => {
-            if (err.status === 400) {
-                console.log("400: не передано одно из полей");
-            } else if (err.status === 401) { console.log("400: пользователь с email не найден") }
-        });
-}
+          })
+          .catch((err) => {
+             // setInfoTooltipOpen(true)
+            //  setIsSymbol(false)
+              setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+              if (err === 400) {
+                  console.log("400 - не передано одно из полей")
+              } else if (err === 401) {
+                  console.log("401 - пользователь с email не найден")
+              }
 
-function handlePageLogin() {
-  setIsLoggedIn(true);
-  checkToken();
-}
+          })
+  }
+
+  function handlePageLogin() {
+      setAuthorized(true);
+      checkToken();
+  }
+
 
   function handleLogout() {
-    setCurrentUser({})
-    setIsLoggedIn(false)
-    localStorage.removeItem("jwt")
-    localStorage.clear()
-    history('/')
+      setCurrentUser({})
+      setAuthorized(false)
+      localStorage.removeItem("jwt")
+      localStorage.clear()
+      history.push('/')
   }
 
-  function handleEditProfile(info) {
-    mainApi.editProfile(info)
-    .then((res) => {
-      setCurrentUser(res);
-      console.log('Данные изменены')
-    })
+  function handleEditProfile({name, email}) {
+      mainApi
+          .editProfile(name, email)
+          .then((res) => {
+              setCurrentUser(res);
+              //setInfoTooltipOpen(true)
+              //setIsSymbol(true)
+              setMessage("Данные профиля успешно изменены.");
+          })
+          .catch((err) => console.log(err));
   }
-
   return (
-    <div className="page">
-      <Header />
-      <Main>
-      <Switch>
-        <Route exact path="/">
-            <Promo />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-        </Route>
+    <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
+      <div className="page">
+        <Header />
+        <Main>
+          <Switch>
+            <Route exact path="/">
+              <Promo />
+              <AboutProject />
+              <Techs />
+              <AboutMe />
+            </Route>
 
-        <Route path="/movies">
-            <SearchForm />
-            <MoviesCardList />
-        </Route>
+            <Route path="/movies">
+              <SearchForm />
+              <MoviesCardList />
+            </Route>
 
-        <Route path="/saved-movies">
-            <SearchForm />
-            <SavedMovies />
-        </Route>
+            <Route path="/saved-movies">
+              <SearchForm />
+              <SavedMovies />
+            </Route>
 
-        <Route path="/profile">
-          <Profile editProfile={handleEditProfile} logout={handleLogout}/>
-        </Route>
+            <Route path="/profile">
+              <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} />
+            </Route>
 
-        <Route path="/signin">
-          <Login />
-        </Route>
+            <Route path="/signin">
+              <Login onLogin={handleLogin}/>
+            </Route>
 
-        <Route path="/signup">
-          <Register register={handleRegister}/>
-        </Route>
+            <Route path="/signup">
+              <Register register={handleRegister} />
+            </Route>
 
-        </Switch>
-      </Main>
-      <Footer />
+          </Switch>
+        </Main>
+        <Footer />
 
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

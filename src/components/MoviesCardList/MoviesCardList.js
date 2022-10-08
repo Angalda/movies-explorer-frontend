@@ -40,7 +40,7 @@ export default function MoviesCardList() {
                     <MoviesCard picture={film16} title={'33 слова о дизайне'} duration={'1ч42м'} select={true} />
                 </ul>
         
-            <div class="moviesCardList__more">
+            <div className="moviesCardList__more">
                 <button type="button" className="moviesCardList__more-btn">Ещё</button>
             </div>
         </section>

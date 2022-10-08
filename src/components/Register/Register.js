@@ -9,6 +9,7 @@ export default function Register(props) {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [formValid, setFormValid] = useState(false);
 
   const emailHandler = (e) => {
     setEmail(e.target.value)
@@ -49,6 +50,12 @@ export default function Register(props) {
     }
   }
 
+  useEffect(() => {
+    if (emailError || nameError || passwordError) {
+      setFormValid(false)
+    } else { setFormValid(true) }
+  }, [emailError, nameError, passwordError])
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -66,18 +73,34 @@ export default function Register(props) {
         <form className="register__form" onSubmit={handleSubmit} noValidate>
 
           <label className="register__input-name">Имя</label>
-          <input className="register__input" type="text" name="name" value={name} onChange={nameHandler} minLength="2" maxLength="100" required></input>
-
+          <input 
+          className={`register__input register__input-name ${!nameError ? '' : 'register__input-error'}`}
+          type="text" 
+          name="name" 
+          value={name} 
+          onChange={nameHandler} 
+          minLength="2" 
+          maxLength="100" 
+          required></input>
+          <p className={`register__error ${!nameError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {nameError}</p>
 
           <label className="register__input-name">E-mail</label>
-          <input className="register__input" type="text" name="email" required placeholder=" pochta@yandex.ru"></input>
-
+          <input 
+          className={`register__input register__input-email ${!emailError ? '' : 'register__input-error'}`}
+          type="email" 
+          name="email" 
+          value={email} 
+          onChange={emailHandler} 
+          minLength="2" 
+          maxLength="100"
+          required></input>
+          <p className={`register__error ${!emailError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {emailError}</p>
 
           <label className="register__input-name">Пароль</label>
-          <input className="register__input register__input-password register__input-error" type="text" name="password" required placeholder="••••••••••••••"></input>
-          <p className='register__error'>Что-то пошло не так... {nameError}</p>
+          <input className={`register__input register__input-password ${!passwordError ? '' : 'register__input-error'}`} type="password" name="password" value={password} onChange={passwordHandler} minLength="8" maxLength="50"required></input>
+          <p className={`register__error ${!passwordError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {passwordError}</p>
 
-          <button className="register__submit" type="submit">Зарегистрироваться</button>
+          <button className="register__submit" type="submit" disabled={!formValid}>Зарегистрироваться</button>
 
           <div className='register__login'>
             <p className='register__text-login'>Уже зарегистрированы?</p>

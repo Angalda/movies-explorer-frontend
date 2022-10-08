@@ -44,7 +44,7 @@ export default function Header(props) {
             <li className='header__nav-item'><Link to="/movies" className="header__nav-item-link" onClick={handleCloseMenuClick}>Фильмы</Link></li>
             <li className='header__nav-item'><Link to="/saved-movies" className="header__nav-item-link" onClick={handleCloseMenuClick}>Сохранённые фильмы</Link></li>
           </ul>
-          <a href="#" className="header__nav-account-container"><img className='header__nav-account-img' src={account} alt="icon-account" /> Аккаунт</a>
+          <a href="/profile" className="header__nav-account-container"><img className='header__nav-account-img' src={account} alt="icon-account" /> Аккаунт</a>
         </nav>
       </div>
 

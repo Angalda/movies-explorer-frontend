@@ -48,11 +48,15 @@ export function login(password, email) {
 
 //Получаем с сервера информацию о пользователе
 export function getProfile() {
-  return fetch(`${this._baseUrl}/users/me`, {
-    headers: this._headers,
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
     credentials: 'include',
   })
-    .then(this._checkResponse)
+    .then(checkRes)
 }
 
 
@@ -68,12 +72,12 @@ export function checkToken(jwt) {
     .then(checkRes);
 };
 
-export function editProfile (name, email, jwt) {
+export function editProfile (name, email) {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATH',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     credentials: 'include',
     body: JSON.stringify({
