@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import thumbImgPlaceholder from "../../images/films/placeholder.jpg";
+import { transformDurationTime } from '../../utils/utils';
 
 
 
@@ -9,8 +10,12 @@ export default function MoviesCard({
     favorited,
     savedMoviesPage,
     onLikeClick,
-    onDeleteClick }) {
+    onDeleteClick,
+    saveMovieList
+ }) {
 
+    const [likeActive, setlikeActive] = useState(false);
+    const cardLikeButtonClassname=`moviesCard__select ${favorited || likeActive ? '' : 'moviesCard__select_hidden'}`
     const { pathname } = useLocation();
     const movieImage = !savedMoviesPage ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image ?? thumbImgPlaceholder;
 
@@ -29,14 +34,16 @@ export default function MoviesCard({
             nameEN: movie.nameEN || 'Unknown'
         };
 
-        onLikeClick(saveMovie)
+        onLikeClick(saveMovie);
+        setlikeActive(true);
+
     }
 
     const handleDeleteClick = () => {
         onDeleteClick(movie)
     }
 
-    console.log(movie);
+    
     return (
         <li className="moviesCard">
             <div className="moviesCard__container">
@@ -44,14 +51,14 @@ export default function MoviesCard({
             </div>
             <div className="moviesCard__description">
                 <h2 className="moviesCard__title">{movie.nameRU || movie.nameEN}</h2>
+
                 <button  type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__contain-select_hidden'}`} onClick={handleLikeClick}>
-                    <div className={`moviesCard__select ${!favorited ? 'moviesCard__select_hidden' : ''}`}></div>
+                    <div className={cardLikeButtonClassname}></div>
                 </button>
-                <button  type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick}>
-                    <div className={`moviesCard__select ${!favorited ? 'moviesCard__select_hidden' : ''}`}></div>
-                </button>
+
+                <button  type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick} />
             </div>
-            <div className="moviesCard__duration">{movie.duration}</div>
+            <div className="moviesCard__duration">{transformDurationTime(movie.duration)}</div>
 
         </li>
     )

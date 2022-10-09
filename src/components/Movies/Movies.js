@@ -27,8 +27,6 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
         if (moviesList.length) {
           setInitialMoviesList(moviesList);
           localStorage.setItem("beatfilmMovies", JSON.stringify(moviesList));
-          
-          console.log(moviesList)
         }
       })
       .catch(() => setIsError(true))

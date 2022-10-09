@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import MoviesCard from "../MoviesCard/MoviesCard";
+
 
 export default function MoviesCardList({
     movies,
@@ -14,10 +15,9 @@ export default function MoviesCardList({
 
 
     const checkIsFavorited = (saveMovieList, movie) => {
-       console.log(saveMovieList);
         return movies.find((element) => element.movieId === movie.id);
       }; 
-
+      
     return (
 
         <section className="moviesCardList">
@@ -28,6 +28,7 @@ export default function MoviesCardList({
                 ) : (
                     movies
                         .map((movie) => (
+                            
                             <MoviesCard
                                 key={movie.id || movie._id}
                                 movie={movie}
@@ -35,6 +36,7 @@ export default function MoviesCardList({
                                 savedMoviesPage={savedMoviesPage}
                                 onLikeClick={onLikeClick}
                                 onDeleteClick={onDeleteClick}
+                                saveMovieList={saveMovieList}
                             />
                         ))
                         .slice(0, listLength)
