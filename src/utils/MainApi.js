@@ -88,11 +88,13 @@ export function editProfile (name, email) {
     .then(checkRes)
 };
 
+
 export function getSaveMovies () {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     credentials: 'include',
   })
