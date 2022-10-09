@@ -5,8 +5,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { filterMovies, filterShortMovies } from "../../utils/utils";
 import Preloader from "../Preloader/Preloader";
 
-
-
 export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listLength, getMoreMovies}) {
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [initialMoviesList, setInitialMoviesList] = useState([]);
@@ -26,9 +24,11 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     setIsLoadingData(true);
     api.getMovies()
       .then((moviesList) => {
-        if (moviesList.data.length) {
-          localStorage.setItem("beatfilmMovies", JSON.stringify(moviesList.data));
-          setInitialMoviesList(moviesList.data);
+        if (moviesList.length) {
+          setInitialMoviesList(moviesList);
+          localStorage.setItem("beatfilmMovies", JSON.stringify(moviesList));
+          
+          console.log(moviesList)
         }
       })
       .catch(() => setIsError(true))
@@ -99,7 +99,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       setEmptySearchResult(false);
     }
   }, []);
-
+   console.log(filteredMovies);
     return (
         <>
         <SearchForm
@@ -118,7 +118,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
             </p>
           ) : (
             <MoviesCardList
-              movies={filteredMovies}
+              movies={initialMoviesList}/*{filteredMovies}*/
               savedMoviesPage={false}
               onLikeClick={onLikeClick}
               onDeleteClick={onDeleteClick}

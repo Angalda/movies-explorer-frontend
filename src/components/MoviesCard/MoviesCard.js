@@ -12,8 +12,8 @@ export default function MoviesCard({
     onDeleteClick }) {
 
     const { pathname } = useLocation();
-    const movieImage = !savedMoviesPage ? `https://api.nomoreparties.co${movie.image.url}` : movie.image ?? thumbImgPlaceholder;
-    
+    const movieImage = !savedMoviesPage ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image ?? thumbImgPlaceholder;
+    console.log(movie);
     return (
         <li className="moviesCard">
             <div className="moviesCard__container">
