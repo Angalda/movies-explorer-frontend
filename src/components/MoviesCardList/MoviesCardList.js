@@ -11,10 +11,11 @@ export default function MoviesCardList({
     listLength,
     getMoreMovies
 }) {
-console.log(movies);
+
 
     const checkIsFavorited = (saveMovieList, movie) => {
-       /* return saveMovieList.find((favoritedMovie) => favoritedMovie.movieId === movie.id);*/
+       console.log(saveMovieList);
+        return movies.find((element) => element.movieId === movie.id);
       }; 
 
     return (

@@ -99,7 +99,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       setEmptySearchResult(false);
     }
   }, []);
-   console.log(filteredMovies);
+ 
     return (
         <>
         <SearchForm

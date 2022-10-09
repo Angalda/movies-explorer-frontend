@@ -66,7 +66,7 @@ useEffect(() => {
    mainApi.getSaveMovies()
       .then((saveMovies) => {
         if(saveMovies) {
-          setSavedMovies(saveMovies);
+          setSavedMovies(saveMovies.data);
         }
       })
       .catch((err) => {
@@ -82,7 +82,7 @@ function handleSaveMovie (movie) {
     setSavedMovies([...savedMovies, newMovie]);
     localStorage.setItem('favoriteMovies', JSON.stringify(newMovie));
   })
-  .catch((err) => console(err));
+  .catch((err) => console.log(err));
 };
 
 //Удаляем фильм
@@ -100,7 +100,7 @@ function handleDeleteMovie (movie) {
     setSavedMovies(newMoviesList);
     localStorage.setItem('favoriteMovies', JSON.stringify(newMoviesList));
   })
-  .catch((err) => console(err));
+  .catch((err) => console.log(err));
 }
 
 
@@ -254,8 +254,12 @@ function handleDeleteMovie (movie) {
             </Route>
 
             <Route path="/saved-movies">
-              <SearchForm />
-              <SavedMovies />
+              <SavedMovies 
+              onDeleteClick={handleDeleteMovie} 
+              saveMovieList={savedMovies} 
+              listLength={listLength}
+              getMoreMovies={getMoreMovies}
+              />
             </Route>
 
             <Route path="/profile">

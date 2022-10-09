@@ -67,6 +67,10 @@
     border: 2px solid #fff;
 }
 
+.moviesCard__contain-select_hidden {
+    display: none;
+}
+
 .moviesCard__delete {
     width: 8px;
     height: 8px;
