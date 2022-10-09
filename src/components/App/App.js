@@ -87,8 +87,12 @@ function handleSaveMovie (movie) {
 
 //Удаляем фильм
 function handleDeleteMovie (movie) {
+
+  console.log(movie);
+
   const deleteMovie = savedMovies.find((i) => i.movieId === movie.id || i.movieId === movie.movieId);
-  mainApi.deleteMovie(deleteMovie.id)
+  console.log(deleteMovie)
+  mainApi.deleteMovie(deleteMovie._id)
   .then((res)=>{
     const newMoviesList = savedMovies.filter((m)=>{
       if (movie.id === m.movieId || movie.movieId === m.movieId) {
