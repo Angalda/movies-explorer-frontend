@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { api } from '../../utils/MoviesApi';
+import { api } from '../../utils/moviesApi';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { filterMovies, filterShortMovies } from "../../utils/utils";

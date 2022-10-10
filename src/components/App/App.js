@@ -18,7 +18,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import { MoviesApi } from '../../utils/MoviesApi';
+import { MoviesApi } from '../../utils/moviesApi';
 import ProtectedRoute from '../ProtectedRoute';
 
 
@@ -185,7 +185,7 @@ function handleDeleteMovie (movie) {
       })
   }
 
-  function handleLogin(email, password) {
+  function handleLogin(password, email) {
     mainApi
       .login(email, password)
       .then((data) => {
@@ -238,7 +238,7 @@ function handleDeleteMovie (movie) {
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
-        <Header />
+        <Header authorized={authorized}/>
         <Main>
           <Switch>
             <Route exact path="/">
