@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+.header__container-link_hidden {
+    display: none;
+}
+
 .header_hidden {
     display: none;
 }
