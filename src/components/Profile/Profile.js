@@ -13,7 +13,7 @@ export default function Profile({ logout, editProfile }) {
 
   const [isActive, setIsActive] = useState(false);
   
-
+ 
   useEffect(() => {
       setValues({
           name: currentUser.name,

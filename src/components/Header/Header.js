@@ -22,15 +22,20 @@ export default function Header({authorized}) {
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
-      <nav className={`header__menu ${pathname !== '/' ? '' : 'header__menu_hidden'}`}>
-        <ul className='header__menu-list'>
-          <li className='header__menu-item'><Link to="/movies" className="header__menu-item-link">Фильмы</Link></li>
-          <li className='header__menu-item'><Link to="/saved-movies" className="header__menu-item-link">Сохранённые фильмы</Link></li>
-        </ul>
+      <nav className={`header__container-link ${!authorized ? 'header__container-link_hidden' : ''}`}>
+          <ul className='header__menu-list'>
+            <li className='header__menu-item'><Link to="/movies" className="header__menu-item-link">Фильмы</Link></li>
+            <li className='header__menu-item'><Link to="/saved-movies" className="header__menu-item-link">Сохранённые фильмы</Link></li>
+          </ul>
+        
       </nav>
+      
+      
+      
       <div className={`header__container-account ${!authorized ? 'header__container-account_hidden' : ''}`}>
       <Link to="/profile" className="header__account-container"><img className='header__account-img' src={account} alt="icon-account" />Аккаунт</Link>
       </div>
+      
       <div className={`header__container-account ${authorized ? 'header__container-account_hidden' : ''}`}>
       <Link to="/signin" className="header__account-container">Войти</Link>
       <Link to="/signup" className="header__account-container">Зарегистрироваться</Link>

@@ -278,7 +278,9 @@ function handleDeleteMovie (movie) {
             <Route path="/signup">
               <Register register={handleRegister} />
             </Route>
-
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
         </Main>
         <Footer />

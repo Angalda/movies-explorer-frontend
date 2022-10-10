@@ -167,6 +167,15 @@
         padding: 18px 30px;
     }
 
+    .header__container-link_hidden {
+        display: none;
+    }
+
+   .header__menu-list {
+    display: none;
+   }
+
+
     .header__signin {
         display: none;
     }
