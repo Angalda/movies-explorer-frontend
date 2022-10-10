@@ -171,7 +171,7 @@ function handleDeleteMovie (movie) {
       .register(name, email, password)
       .then((res) => {
         if (res) {
-          handleLogin(password, email)
+          handleLogin(email, password)
         }
       })
       .catch((err) => {
