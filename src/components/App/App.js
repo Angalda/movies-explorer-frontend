@@ -18,7 +18,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import { MoviesApi } from '../../utils/moviesApi';
+import { MoviesApi } from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute';
 
 

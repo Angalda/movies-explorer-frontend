@@ -74,7 +74,7 @@ export function checkToken(jwt) {
 
 export function editProfile (name, email) {
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'PATH',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
