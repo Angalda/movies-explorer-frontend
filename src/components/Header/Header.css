@@ -111,10 +111,34 @@
     padding: 8px 12px;
 }
 
+.header__container-account {
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.header__container-account_visible {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
 .header__account {
     padding: 0;
     margin: 0;
     width: 12px;
+}
+
+.header__signin {
+    text-decoration: none;
+    color: #000;
+    padding: 0;
+    margin: 0;
+}
+
+.header__signin:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 .header__account-container:hover {
@@ -142,6 +166,10 @@
 @media screen and (max-width: 991.98px) {
     .header {
         padding: 18px 30px;
+    }
+
+    .header__signin {
+        display: none;
     }
 
     .header__signup-btn {

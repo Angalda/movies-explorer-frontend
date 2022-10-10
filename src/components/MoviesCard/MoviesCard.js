@@ -11,7 +11,8 @@ export default function MoviesCard({
     savedMoviesPage,
     onLikeClick,
     onDeleteClick,
-    saveMovieList
+    saveMovieList,
+    trailerLink
  }) {
 
     const [likeActive, setlikeActive] = useState(false);
@@ -43,23 +44,26 @@ export default function MoviesCard({
         onDeleteClick(movie)
     }
 
-    
+
     return (
         <li className="moviesCard">
-            <div className="moviesCard__container">
-                <img className="moviesCard__img" src={movieImage} alt={'film'} />
-            </div>
-            <div className="moviesCard__description">
-                <h2 className="moviesCard__title">{movie.nameRU || movie.nameEN}</h2>
+            
+                <div className="moviesCard__container">
+                <a className='moviesCard__trailer-link' href={trailerLink} target="blank">
+                    <img className="moviesCard__img" src={movieImage} alt={'film'} />
+                </a>
+                </div>
+                <div className="moviesCard__description">
+                    <h2 className="moviesCard__title">{movie.nameRU || movie.nameEN}</h2>
 
-                <button  type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__contain-select_hidden'}`} onClick={handleLikeClick}>
-                    <div className={cardLikeButtonClassname}></div>
-                </button>
+                    <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__contain-select_hidden'}`} onClick={handleLikeClick}>
+                        <div className={cardLikeButtonClassname}></div>
+                    </button>
 
-                <button  type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick} />
-            </div>
-            <div className="moviesCard__duration">{transformDurationTime(movie.duration)}</div>
-
+                    <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick} />
+                </div>
+                <div className="moviesCard__duration">{transformDurationTime(movie.duration)}</div>
+            
         </li>
     )
 }

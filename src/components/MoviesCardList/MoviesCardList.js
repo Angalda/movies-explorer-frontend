@@ -15,8 +15,9 @@ export default function MoviesCardList({
 
 
     const checkIsFavorited = (saveMovieList, movie) => {
-        return movies.find((element) => element.movieId === movie.id);
-      }; 
+        return saveMovieList.find((element) => element.movieId === movie.id);
+    }; 
+
       
     return (
 
@@ -37,6 +38,7 @@ export default function MoviesCardList({
                                 onLikeClick={onLikeClick}
                                 onDeleteClick={onDeleteClick}
                                 saveMovieList={saveMovieList}
+                                trailerLink={movie.trailerLink}
                             />
                         ))
                         .slice(0, listLength)

@@ -19,6 +19,7 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import { MoviesApi } from '../../utils/MoviesApi';
+import ProtectedRoute from '../ProtectedRoute';
 
 
 function App() {
@@ -247,7 +248,7 @@ function handleDeleteMovie (movie) {
               <AboutMe />
             </Route>
 
-            <Route path="/movies">
+            <ProtectedRoute exact path="/movies" authorized={authorized}>
               <Movies 
               onLikeClick={handleSaveMovie} 
               onDeleteClick={handleDeleteMovie} 
@@ -255,20 +256,20 @@ function handleDeleteMovie (movie) {
               listLength={listLength}
               getMoreMovies={getMoreMovies}
               />
-            </Route>
+            </ProtectedRoute>
 
-            <Route path="/saved-movies">
+            <ProtectedRoute exact path="/saved-movies" authorized={authorized}>
               <SavedMovies 
               onDeleteClick={handleDeleteMovie} 
               saveMovieList={savedMovies} 
               listLength={listLength}
               getMoreMovies={getMoreMovies}
               />
-            </Route>
+            </ProtectedRoute>
 
-            <Route path="/profile">
+            <ProtectedRoute exact path="/profile" authorized={authorized}>
               <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} />
-            </Route>
+            </ProtectedRoute>
 
             <Route path="/signin">
               <Login onLogin={handleLogin} />
