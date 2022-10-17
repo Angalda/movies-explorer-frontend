@@ -18,7 +18,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import { MoviesApi } from '../../utils/moviesApi';
+import { MoviesApi } from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute';
 
 
@@ -51,7 +51,7 @@ useEffect(() => {
         setCardsNumber(2);
         setListLength(8);
     } else if (width <= 575.98) {
-        setCardsNumber(1);
+        setCardsNumber(1);  
         setListLength(5);
     }
 }, [width]);
@@ -166,6 +166,7 @@ function handleDeleteMovie (movie) {
     }
   }
 
+  //Регистрация
   function handleRegister(name, email, password) {
     mainApi
       .register(name, email, password)
@@ -185,6 +186,7 @@ function handleDeleteMovie (movie) {
       })
   }
 
+  //Вход
   function handleLogin(password, email) {
     mainApi
       .login(email, password)
@@ -214,7 +216,7 @@ function handleDeleteMovie (movie) {
     checkToken();
   }
 
-
+//Выход
   function handleLogout() {
     setCurrentUser({})
     setAuthorized(false)
@@ -223,6 +225,7 @@ function handleDeleteMovie (movie) {
     history.push('/')
   }
 
+  //Редактирование
   function handleEditProfile({ name, email }) {
     mainApi
       .editProfile(name, email)
@@ -235,6 +238,7 @@ function handleDeleteMovie (movie) {
       .catch((err) => console.log(err));
 
   }
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
