@@ -116,7 +116,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
             </p>
           ) : (
             <MoviesCardList
-              movies={initialMoviesList}/*{filteredMovies}*/
+              movies={filteredMovies} /*{initialMoviesList}*/
               savedMoviesPage={false}
               onLikeClick={onLikeClick}
               onDeleteClick={onDeleteClick}

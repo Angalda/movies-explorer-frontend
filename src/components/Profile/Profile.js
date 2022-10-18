@@ -10,6 +10,7 @@ export default function Profile({ logout, editProfile }) {
   const {values, setValues, isValid, handleChange} = useFormWithValidation();
   const nameInput = useRef();
   const emailInput = useRef();
+  const [errorMessage, setErrorMessage] =useState(false)
 
   const [isActive, setIsActive] = useState(false);
   
@@ -30,6 +31,7 @@ export default function Profile({ logout, editProfile }) {
     });
     setIsActive(false);
     console.log(currentUser)
+    setErrorMessage(true);
   }
 
   return (
@@ -64,6 +66,7 @@ export default function Profile({ logout, editProfile }) {
           
           />
         </div>
+        <p className={`register__error ${!errorMessage ? 'register__error_hidden' : ''}`}>Не удалось сохранить данные... {errorMessage}</p>
         <button 
         type="submit"
         className={`profile__submit-edit ${!isActive ? 'profile__submit-edit_hidden' : ''}`}
@@ -71,6 +74,7 @@ export default function Profile({ logout, editProfile }) {
   
         >Редактировать</button>
         <button className="profile__submit-logout" type="button" onClick={logout}><Link to="/signin" className="profile__submit-logout-link">Выйти из аккаунта</Link></button>
+        
       </form>
 
     </section>
