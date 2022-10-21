@@ -89,10 +89,8 @@ function handleSaveMovie (movie) {
 //Удаляем фильм
 function handleDeleteMovie (movie) {
 
-  console.log(movie);
-
   const deleteMovie = savedMovies.find((i) => i.movieId === movie.id || i.movieId === movie.movieId);
-  console.log(deleteMovie)
+
   mainApi.deleteMovie(deleteMovie._id)
   .then((res)=>{
     const newMoviesList = savedMovies.filter((m)=>{
@@ -103,6 +101,7 @@ function handleDeleteMovie (movie) {
       }
     });
     setSavedMovies(newMoviesList);
+    
     localStorage.setItem('favoriteMovies', JSON.stringify(newMoviesList));
   })
   .catch((err) => console.log(err));
