@@ -234,7 +234,10 @@ function handleDeleteMovie (movie) {
         //setIsSymbol(true)
         setMessage("Данные профиля успешно изменены.");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+      });
 
   }
 
@@ -271,7 +274,7 @@ function handleDeleteMovie (movie) {
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/profile" authorized={authorized}>
-              <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} />
+              <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message}/>
             </ProtectedRoute>
 
             <Route path="/signin">

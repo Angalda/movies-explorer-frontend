@@ -2,8 +2,9 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { Link, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurentUserContext'
 import useFormWithValidation from "../../utils/validation";
+import * as mainApi from "../../utils/MainApi";
 
-export default function Profile({ logout, editProfile }) {
+export default function Profile({ logout, editProfile, message }) {
 
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
@@ -29,15 +30,24 @@ export default function Profile({ logout, editProfile }) {
       name: values.name,
       email: values.email
     });
-    setIsActive(false);
+
+    mainApi.getProfile()
+    .then((res) => {
+      setCurrentUser(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
     console.log(currentUser)
+    setIsActive(false);
     setErrorMessage(true);
   }
 
   return (
     <section className="profile__container">
       <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
-      <form className="profile__form" onSubmit={handleFormSubmit}>
+      <form className="profile__form">
         <div className="profile__inputs">
           <label className="profile__input-name">Имя</label>
           <input className="profile__input" 
@@ -66,9 +76,10 @@ export default function Profile({ logout, editProfile }) {
           
           />
         </div>
-        <p className={`register__error ${!errorMessage ? 'register__error_hidden' : ''}`}>Не удалось сохранить данные... {errorMessage}</p>
+        <p className={`profile__error ${!errorMessage ? 'register__error_hidden' : ''}`}>{message}</p>
         <button 
-        type="submit"
+        type="button"
+        onClick={handleFormSubmit}
         className={`profile__submit-edit ${!isActive ? 'profile__submit-edit_hidden' : ''}`}
         disabled={!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
   

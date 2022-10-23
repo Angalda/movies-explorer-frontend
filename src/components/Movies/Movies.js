@@ -33,6 +33,8 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       .finally(() => setIsLoadingData(false))
   }
 
+ 
+
   // Поиск по фильмам
   const handleSearch = (inputValue) => {
     showLoader();
@@ -46,11 +48,11 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     localStorage.setItem(`filteredMovies`, JSON.stringify(moviesList));
   };
 
-  useEffect(()=>{
-    if (initialMoviesList.length === 0) {
+ /* useEffect(()=>{
+    if (initialMoviesList.length===0) {
       getAllMovies();
     }
-  })
+  })*/
 
   // Проверка чекбокса в локальном хранилище
   useEffect(() => {
@@ -94,7 +96,16 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
         setFilteredMovies(foundMovies);
       }
     } else {
-      setEmptySearchResult(false);
+
+      if (localStorage.getItem("beatfilmMovies")) {
+        setFilteredMovies(JSON.parse(localStorage.getItem("beatfilmMovies")) )
+        console.log(filteredMovies)
+      } else {
+        getAllMovies();
+        setEmptySearchResult(false);
+
+      }
+;
     }
   }, []);
  
@@ -116,7 +127,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
             </p>
           ) : (
             <MoviesCardList
-              movies={filteredMovies} /*{initialMoviesList}*/
+              movies={ filteredMovies.length > 0 ? filteredMovies : initialMoviesList} /*{initialMoviesList}*/
               savedMoviesPage={false}
               onLikeClick={onLikeClick}
               onDeleteClick={onDeleteClick}
