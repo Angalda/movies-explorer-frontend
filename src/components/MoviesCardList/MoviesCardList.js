@@ -44,10 +44,11 @@ export default function MoviesCardList({
                         .slice(0, listLength)
                 )}
             </ul>
-
-            <div className="moviesCardList__more">
+            
+            <div className={`moviesCardList__more ${emptySearchResult ? 'moviesCardList__more_hidden' : ''}`}>
                 <button type="button" className="moviesCardList__more-btn" onClick={getMoreMovies}>Ещё</button>
             </div>
+            
         </section>
     )
 }

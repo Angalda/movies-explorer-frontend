@@ -23,6 +23,10 @@
     justify-content: center;
 }
 
+.moviesCardList__more_hidden {
+    display: none;
+}
+
 .moviesCardList__more-btn {
     font-weight: 500;
     font-size: 12px;

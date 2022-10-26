@@ -38,6 +38,8 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
   // Поиск по фильмам
   const handleSearch = (inputValue) => {
     showLoader();
+
+
     localStorage.setItem(`searchPhrase`, inputValue);
     localStorage.setItem(`shortMoviesHandler`, shortMovies);
     const moviesList = filterMovies(getBeatfilmMoviesToStorage, inputValue, shortMovies);
