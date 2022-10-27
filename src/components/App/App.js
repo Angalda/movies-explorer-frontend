@@ -260,6 +260,8 @@ function handleDeleteMovie (movie) {
               onDeleteClick={handleDeleteMovie} 
               saveMovieList={savedMovies} 
               listLength={listLength}
+              setListLength={setListLength}
+              width = {width}
               getMoreMovies={getMoreMovies}
               />
             </ProtectedRoute>

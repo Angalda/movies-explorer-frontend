@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { filterMovies, filterShortMovies } from "../../utils/utils";
 import Preloader from "../Preloader/Preloader";
 
-export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listLength, getMoreMovies}) {
+export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listLength, setListLength, width, getMoreMovies}) {
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [initialMoviesList, setInitialMoviesList] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -38,8 +38,13 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
   // Поиск по фильмам
   const handleSearch = (inputValue) => {
     showLoader();
-
-
+    if (width > 991.98) {
+      setListLength(12);
+  } else if (width <= 991.98) {
+      setListLength(8);
+  } else if (width <= 575.98) {
+      setListLength(5);
+  }
     localStorage.setItem(`searchPhrase`, inputValue);
     localStorage.setItem(`shortMoviesHandler`, shortMovies);
     const moviesList = filterMovies(getBeatfilmMoviesToStorage, inputValue, shortMovies);
