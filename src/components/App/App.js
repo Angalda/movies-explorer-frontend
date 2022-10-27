@@ -64,10 +64,17 @@ useEffect(() => {
 //Список сохраненных фильмов
 useEffect(() => {
   if (authorized) {
+   
    mainApi.getSaveMovies()
       .then((saveMovies) => {
+        console.log(currentUser._id)
         if(saveMovies) {
-          setSavedMovies(saveMovies.data);
+          //setSavedMovies(saveMovies.data);
+         const moviesOfCurrentUser = saveMovies.data.filter(
+           (movie) => 
+           currentUser._id === movie.owner
+          );
+          setSavedMovies(moviesOfCurrentUser);
         }
       })
       .catch((err) => {
@@ -107,7 +114,6 @@ function handleDeleteMovie (movie) {
   .catch((err) => console.log(err));
 }
 
-
 /*Авторизация*/
   useEffect(() => {
     if (authorized) {
@@ -124,6 +130,8 @@ function handleDeleteMovie (movie) {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt")
     if (jwt) {
+      checkToken()
+    } else {
       mainApi
         .getProfile()
         .then((res) => {
