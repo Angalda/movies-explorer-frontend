@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Routes, useLocation, useHistory, Redirect } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurentUserContext';
 import * as mainApi from "../../utils/MainApi";
 
@@ -10,17 +10,13 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Footer from '../Footer/Footer';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Movies from '../Movies/Movies'
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import { MoviesApi } from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute';
-
 
 function App() {
   const loggedIn = true;
@@ -28,8 +24,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [message, setMessage] = useState("");
   const history = useHistory();
-  const { pathname } = useLocation();
-  const [ locationKeys, setLocationKeys ] = useState([])
+  const [locationKeys, setLocationKeys] = useState([])
 
   const [savedMovies, setSavedMovies] = useState([])
   const [width, setWidth] = useState(window.innerWidth);
@@ -39,25 +34,21 @@ function App() {
   useEffect(() => {
     return history.listen(location => {
       if (history.action === 'PUSH') {
-        setLocationKeys([ location.key ])
+        setLocationKeys([location.key])
       }
-  
+
       if (history.action === 'POP') {
         if (locationKeys[1] === location.key) {
-          setLocationKeys(([ _, ...keys ]) => keys)
-  
+          setLocationKeys(([_, ...keys]) => keys)
           // Handle forward event
-  
         } else {
-          setLocationKeys((keys) => [ location.key, ...keys ])
-  
+          setLocationKeys((keys) => [location.key, ...keys])
           // Handle back event
           history.goBack()
         }
       }
     })
-  }, [ locationKeys, ])
-
+  }, [locationKeys,])
 
   /*Авторизация*/
   useEffect(() => {
@@ -73,198 +64,196 @@ function App() {
     }
   }, [authorized])
 
-useEffect(() => {
-  const jwt = localStorage.getItem("jwt")
-  if (jwt) {
-    checkToken()
-  }
-}, [history])
-
-function checkToken() {
-  if (localStorage.getItem("jwt")) {
+  useEffect(() => {
     const jwt = localStorage.getItem("jwt")
     if (jwt) {
-      mainApi
-        .checkToken(jwt)
-        .then((data) => {
-          if (data) {
-            setAuthorized(true);
-            setCurrentUser(data.data);
-          }
-        })
-        .catch((err) => {
-
-          if (err === 401) {
-            setAuthorized(false)
-            console.log("401 - Токен не передан или передан не в том формате")
-          }
-          console.log("401 - Переданный токен не корректен")
-
-        })
+      checkToken()
     }
-    if (!jwt) {
-      setAuthorized(false)
+  }, [history])
+
+  function checkToken() {
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt")
+      if (jwt) {
+        mainApi
+          .checkToken(jwt)
+          .then((data) => {
+            if (data) {
+              setAuthorized(true);
+              setCurrentUser(data.data);
+            }
+          })
+          .catch((err) => {
+
+            if (err === 401) {
+              setAuthorized(false)
+              console.log("401 - Токен не передан или передан не в том формате")
+            }
+            console.log("401 - Переданный токен не корректен")
+
+          })
+      }
+      if (!jwt) {
+        setAuthorized(false)
+      }
     }
   }
-}
 
-//Регистрация
-function handleRegister(name, email, password) {
-  mainApi
-    .register(name, email, password)
-    .then((res) => {
-      if (res) {
-        handleLogin(email, password)
-      }
-    })
-    .catch((err) => {
-      // setInfoTooltipOpen(true)
-      // setIsSymbol(false)
-      setMessage("Что-то пошло не так! Попробуйте ещё раз.");
-      if (err === 400) {
-        console.log("400 - некорректно заполнено одно из полей");
-      }
-
-    })
-}
-
-//Вход
-function handleLogin(password, email) {
-  mainApi
-    .login(email, password)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token)
-        checkToken();
-        history.push("/movies");
-      }
-
-    })
-    .catch((err) => {
-      // setInfoTooltipOpen(true)
-      //  setIsSymbol(false)
-      setMessage("Что-то пошло не так! Попробуйте ещё раз.");
-      if (err === 400) {
-        console.log("400 - не передано одно из полей")
-      } else if (err === 401) {
-        console.log("401 - пользователь с email не найден")
-      }
-
-    })
-}
-
-
-
-//Выход
-function handleLogout() {
-  setCurrentUser({})
-  setAuthorized(false)
-  localStorage.removeItem("jwt")
-  localStorage.clear()
-  history.push('/')
-}
-
-//Редактирование
-function handleEditProfile({ name, email }) {
-  mainApi
-    .editProfile(name, email)
-    .then((res) => {
-      setCurrentUser(res);
-      //setInfoTooltipOpen(true)
-      //setIsSymbol(true)
-      setMessage("Данные профиля успешно изменены.");
-    })
-    .catch((err) => {
-      console.log(err);
-      setMessage("Что-то пошло не так! Попробуйте ещё раз.");
-    });
-
-}
-
-  function newWindowWidth() {
-    setWidth(window.innerWidth);
-}
-
-function getMoreMovies() {
-    setListLength(listLength + cardsNumber);
-}
-
-useEffect(() => {
-    if (width > 991.98) {
-        setCardsNumber(4);
-        setListLength(12);
-    } else if (width <= 991.98) {
-        setCardsNumber(2);
-        setListLength(8);
-    } else if (width <= 575.98) {
-        setCardsNumber(1);  
-        setListLength(5);
-    }
-}, [width]);
-
-useEffect(() => {
-    window.addEventListener('resize', newWindowWidth);
-    return () => window.removeEventListener('resize', newWindowWidth)
-}, []);
-
-//Список сохраненных фильмов
-useEffect(() => {
-  if (authorized) {
-   
-   mainApi.getSaveMovies()
-      .then((saveMovies) => {
-        if(saveMovies) {
-         const moviesOfCurrentUser = saveMovies.data.filter(
-           (movie) => 
-           currentUser._id === movie.owner
-          );
-          setSavedMovies(moviesOfCurrentUser);
+  //Регистрация
+  function handleRegister(name, email, password) {
+    mainApi
+      .register(name, email, password)
+      .then((res) => {
+        if (res) {
+          handleLogin(email, password)
         }
       })
       .catch((err) => {
-        console.log(err);
-      });
+        // setInfoTooltipOpen(true)
+        // setIsSymbol(false)
+        setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+        if (err === 400) {
+          console.log("400 - некорректно заполнено одно из полей");
+        }
+
+      })
   }
-}, [authorized]);
 
-//Сохраняем фильм
-function handleSaveMovie (movie) {
-  mainApi.saveMovie(movie)
-  .then((newMovie)=>{
-    setSavedMovies([...savedMovies, newMovie.data]);
-    localStorage.setItem('favoriteMovies', JSON.stringify(newMovie));
-  })
-  .catch((err) => console.log(err));
-};
+  //Вход
+  function handleLogin(password, email) {
+    mainApi
+      .login(email, password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token)
+          checkToken();
+          history.push("/movies");
+        }
 
-//Удаляем фильм
-function handleDeleteMovie (movie) {
+      })
+      .catch((err) => {
+        // setInfoTooltipOpen(true)
+        //  setIsSymbol(false)
+        setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+        if (err === 400) {
+          console.log("400 - не передано одно из полей")
+        } else if (err === 401) {
+          console.log("401 - пользователь с email не найден")
+        }
 
-  const deleteMovie = savedMovies.find((i) => i.movieId === movie.id || i.movieId === movie.movieId);
+      })
+  }
 
-  mainApi.deleteMovie(deleteMovie._id)
-  .then((res)=>{
-    const newMoviesList = savedMovies.filter((m)=>{
-      if (movie.id === m.movieId || movie.movieId === m.movieId) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    setSavedMovies(newMoviesList);
-    
-    localStorage.setItem('favoriteMovies', JSON.stringify(newMoviesList));
-  })
-  .catch((err) => console.log(err));
-}
+  //Выход
+  function handleLogout() {
+    setCurrentUser({})
+    setAuthorized(false)
+    localStorage.removeItem("jwt")
+    localStorage.clear()
+    history.push('/')
+  }
+
+  //Редактирование
+  function handleEditProfile({ name, email }) {
+    mainApi
+      .editProfile(name, email)
+      .then((res) => {
+        setCurrentUser(res);
+        //setInfoTooltipOpen(true)
+        //setIsSymbol(true)
+        setMessage("Данные профиля успешно изменены.");
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage("Что-то пошло не так! Попробуйте ещё раз.");
+      });
+
+  }
+
+  function newWindowWidth() {
+    setWidth(window.innerWidth);
+  }
+
+  function getMoreMovies() {
+    setListLength(listLength + cardsNumber);
+  }
+
+  useEffect(() => {
+    if (width > 991.98) {
+      setCardsNumber(4);
+      setListLength(12);
+    } else if (width <= 991.98) {
+      setCardsNumber(2);
+      setListLength(8);
+    } else if (width <= 575.98) {
+      setCardsNumber(1);
+      setListLength(5);
+    }
+  }, [width]);
+
+  useEffect(() => {
+    window.addEventListener('resize', newWindowWidth);
+    return () => window.removeEventListener('resize', newWindowWidth)
+  }, []);
+
+  //Список сохраненных фильмов
+  useEffect(() => {
+    if (authorized) {
+
+      mainApi.getSaveMovies()
+        .then((saveMovies) => {
+          if (saveMovies) {
+            const moviesOfCurrentUser = saveMovies.data.filter(
+              (movie) =>
+                currentUser._id === movie.owner
+            );
+            setSavedMovies(moviesOfCurrentUser);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [authorized]);
+
+  //Сохраняем фильм
+  function handleSaveMovie(movie) {
+    mainApi.saveMovie(movie)
+      .then((newMovie) => {
+        setSavedMovies([...savedMovies, newMovie.data]);
+        localStorage.setItem('favoriteMovies', JSON.stringify(newMovie));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //Удаляем фильм
+  function handleDeleteMovie(movie) {
+
+    const deleteMovie = savedMovies.find((i) => i.movieId === movie.id || i.movieId === movie.movieId);
+
+    mainApi.deleteMovie(deleteMovie._id)
+      .then((res) => {
+        const newMoviesList = savedMovies.filter((m) => {
+          if (movie.id === m.movieId || movie.movieId === m.movieId) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+        setSavedMovies(newMoviesList);
+
+        localStorage.setItem('favoriteMovies', JSON.stringify(newMoviesList));
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
-        <Header authorized={authorized}/>
+        <Header authorized={authorized} />
         <Main>
           <Switch>
-   
+
             <ProtectedRoute exact path="/movies">
               <Route>
                 <Movies
@@ -295,17 +284,16 @@ function handleDeleteMovie (movie) {
                 <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message} />
               </Route>
             </ProtectedRoute>
-         
-     
+
             <Route exact path="/signin">
-              {authorized ? (<Redirect to="/" />) :(
-              <Login onLogin={handleLogin} />
+              {authorized ? (<Redirect to="/" />) : (
+                <Login onLogin={handleLogin} />
               )}
             </Route>
-            
+
             <Route exact path="/signup" >
-            {authorized ? (<Redirect to="/" />) :(
-              <Register register={handleRegister} />
+              {authorized ? (<Redirect to="/" />) : (
+                <Register register={handleRegister} />
               )}
             </Route>
 
@@ -327,47 +315,5 @@ function handleDeleteMovie (movie) {
     </CurrentUserContext.Provider>
   );
 }
-
-/* Главная
-<Header />
-<Promo />
-<AboutProject />
-<Techs />
-<AboutMe />
-<Footer />
-*/
-
-
-/*  Фильмы (с меню)   
-<Header />
-<SearchForm />
-<MoiesCardList />
-<Footer />
-*/
-
-/* Профиль
-  <Header />
-  <Profile />
-*/
-
-/*Регистрация
-<Register />
-*/
-
-/* Логин 
- <Login />
-*/
-
-/*Не найдено
-<NotFound />
-*/
-
-/* Сохраненные фильмы
- <Header />
-  <SearchForm />
-  <SavedMovies />
-  <Footer />
-*/
-
 
 export default App;

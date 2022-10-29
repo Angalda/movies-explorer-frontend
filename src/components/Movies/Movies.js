@@ -33,8 +33,6 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       .finally(() => setIsLoadingData(false))
   }
 
- 
-
   // Поиск по фильмам
   const handleSearch = (inputValue) => {
     showLoader();
@@ -91,7 +89,6 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     }
     localStorage.setItem(`shortMoviesHandler`, !shortMovies);
   };
-
 
   // Показ найденных фильмов
   useEffect(() => {
