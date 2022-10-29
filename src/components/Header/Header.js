@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, NavLink } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 import account from '../../images/icon-profile.svg';
@@ -24,8 +24,8 @@ export default function Header({authorized}) {
       </Link>
       <nav className={`header__container-link ${!authorized ? 'header__container-link_hidden' : ''}`}>
           <ul className='header__menu-list'>
-            <li className='header__menu-item'><Link to="/movies" className="header__menu-item-link">Фильмы</Link></li>
-            <li className='header__menu-item'><Link to="/saved-movies" className="header__menu-item-link">Сохранённые фильмы</Link></li>
+            <li className='header__menu-item'><NavLink to="/movies" activeClassName="header__menu-link_active" className="header__menu-item-link">Фильмы</NavLink></li>
+            <li className='header__menu-item'><NavLink to="/saved-movies" activeClassName="header__menu-link_active" className="header__menu-item-link">Сохранённые фильмы</NavLink></li>
           </ul>
         
       </nav>
@@ -55,9 +55,9 @@ export default function Header({authorized}) {
 
         <nav className='header__nav'>
           <ul className='header__nav-list'>
-            <li className='header__nav-item'><Link to="/" className="header__nav-item-link" onClick={handleCloseMenuClick}>Главная</Link></li>
-            <li className='header__nav-item'><Link to="/movies" className="header__nav-item-link" onClick={handleCloseMenuClick}>Фильмы</Link></li>
-            <li className='header__nav-item'><Link to="/saved-movies" className="header__nav-item-link" onClick={handleCloseMenuClick}>Сохранённые фильмы</Link></li>
+            <li className='header__nav-item'><NavLink to="/" activeClassName="header__menu-link_active" className="header__nav-item-link" onClick={handleCloseMenuClick}>Главная</NavLink></li>
+            <li className='header__nav-item'><NavLink to="/movies" activeClassName="header__menu-link_active" className="header__nav-item-link" onClick={handleCloseMenuClick}>Фильмы</NavLink></li>
+            <li className='header__nav-item'><NavLink to="/saved-movies" activeClassName="header__menu-link_active" className="header__nav-item-link" onClick={handleCloseMenuClick}>Сохранённые фильмы</NavLink></li>
           </ul>
           <div className={`header__container-account ${!authorized ? 'header__container-account_hidden' : ''}`}>
           <Link to="/profile" className="header__nav-account-container" onClick={handleCloseMenuClick}><img className='header__nav-account-img' src={account} alt="icon-account" /> Аккаунт</Link>

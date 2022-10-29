@@ -103,6 +103,11 @@
     cursor: pointer;
 }
 
+.header__menu-link_active {
+    text-decoration: underline;
+    color: #aaa;
+  } 
+
 .header__account-container {
     margin: 0 5px 0 0;
     text-decoration: none;

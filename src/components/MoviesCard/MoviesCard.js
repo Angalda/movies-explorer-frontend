@@ -55,13 +55,14 @@ export default function MoviesCard({
                 </div>
                 <div className="moviesCard__description">
                     <h2 className="moviesCard__title">{movie.nameRU || movie.nameEN}</h2>
-
-                    <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__contain-select_hidden'}`} onClick={handleLikeClick}>
+                  
+                   
+                   <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select' : 'moviesCard__contain-select_hidden'}`} onClick={!favorited ?  handleLikeClick : handleDeleteClick}>
                         <div className={cardLikeButtonClassname}></div>
                     </button>
-
-                    <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick} />
-                </div>
+                   
+                   <button type="button" className={`${pathname !== '/saved-movies' ? 'moviesCard__contain-select_hidden' : 'moviesCard__delete'}`} onClick={handleDeleteClick} />
+ </div>
                 <div className="moviesCard__duration">{transformDurationTime(movie.duration)}</div>
             
         </li>

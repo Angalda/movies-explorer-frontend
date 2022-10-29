@@ -83,6 +83,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       if (filterShortMovies(initialMoviesList).length === 0) {
         setFilteredMovies(filterShortMovies(initialMoviesList));
         setEmptySearchResult(true);
+        
       } else {
         setFilteredMovies(filterShortMovies(initialMoviesList));
         setEmptySearchResult(false);
@@ -90,6 +91,7 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     }
     localStorage.setItem(`shortMoviesHandler`, !shortMovies);
   };
+
 
   // Показ найденных фильмов
   useEffect(() => {

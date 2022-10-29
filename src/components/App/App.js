@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Routes, useLocation, useHistory } from 'react-router-dom';
+import { Route, Switch, Routes, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurentUserContext';
 import * as mainApi from "../../utils/MainApi";
 
@@ -29,11 +29,34 @@ function App() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const { pathname } = useLocation();
+  const [ locationKeys, setLocationKeys ] = useState([])
 
   const [savedMovies, setSavedMovies] = useState([])
   const [width, setWidth] = useState(window.innerWidth);
   const [listLength, setListLength] = useState(12);
   const [cardsNumber, setCardsNumber] = useState(4);
+
+  useEffect(() => {
+    return history.listen(location => {
+      if (history.action === 'PUSH') {
+        setLocationKeys([ location.key ])
+      }
+  
+      if (history.action === 'POP') {
+        if (locationKeys[1] === location.key) {
+          setLocationKeys(([ _, ...keys ]) => keys)
+  
+          // Handle forward event
+  
+        } else {
+          setLocationKeys((keys) => [ location.key, ...keys ])
+  
+          // Handle back event
+          history.goBack()
+        }
+      }
+    })
+  }, [ locationKeys, ])
 
 
   /*Авторизация*/
@@ -53,21 +76,7 @@ function App() {
 useEffect(() => {
   const jwt = localStorage.getItem("jwt")
   if (jwt) {
-
     checkToken()
-
-    /*mainApi
-      .getProfile()
-      .then((res) => {
-        if (res) {
-          setAuthorized(true)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })*/
-
-
   }
 }, [history])
 
@@ -249,13 +258,57 @@ function handleDeleteMovie (movie) {
   .catch((err) => console.log(err));
 }
 
-
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
         <Header authorized={authorized}/>
         <Main>
           <Switch>
+   
+            <ProtectedRoute exact path="/movies">
+              <Route>
+                <Movies
+                  onLikeClick={handleSaveMovie}
+                  onDeleteClick={handleDeleteMovie}
+                  saveMovieList={savedMovies}
+                  listLength={listLength}
+                  setListLength={setListLength}
+                  width={width}
+                  getMoreMovies={getMoreMovies}
+                />
+              </Route>
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/saved-movies">
+              <Route>
+                <SavedMovies
+                  onDeleteClick={handleDeleteMovie}
+                  saveMovieList={savedMovies}
+                  listLength={listLength}
+                  getMoreMovies={getMoreMovies}
+                />
+              </Route>
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/profile">
+              <Route>
+                <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message} />
+              </Route>
+            </ProtectedRoute>
+         
+     
+            <Route exact path="/signin">
+              {authorized ? (<Redirect to="/" />) :(
+              <Login onLogin={handleLogin} />
+              )}
+            </Route>
+            
+            <Route exact path="/signup" >
+            {authorized ? (<Redirect to="/" />) :(
+              <Register register={handleRegister} />
+              )}
+            </Route>
+
             <Route exact path="/">
               <Promo />
               <AboutProject />
@@ -263,39 +316,7 @@ function handleDeleteMovie (movie) {
               <AboutMe />
             </Route>
 
-            <ProtectedRoute exact path="/movies" authorized={authorized}>
-              <Movies 
-              onLikeClick={handleSaveMovie} 
-              onDeleteClick={handleDeleteMovie} 
-              saveMovieList={savedMovies} 
-              listLength={listLength}
-              setListLength={setListLength}
-              width = {width}
-              getMoreMovies={getMoreMovies}
-              />
-            </ProtectedRoute>
-
-            <ProtectedRoute exact path="/saved-movies" authorized={authorized}>
-              <SavedMovies 
-              onDeleteClick={handleDeleteMovie} 
-              saveMovieList={savedMovies} 
-              listLength={listLength}
-              getMoreMovies={getMoreMovies}
-              />
-            </ProtectedRoute>
-
-            <ProtectedRoute exact path="/profile" authorized={authorized}>
-              <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message}/>
-            </ProtectedRoute>
-
-            <Route path="/signin">
-              <Login onLogin={handleLogin} />
-            </Route>
-
-            <Route path="/signup">
-              <Register register={handleRegister} />
-            </Route>
-            <Route path="*">
+            <Route path="/">
               <NotFound />
             </Route>
           </Switch>

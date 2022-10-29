@@ -54,6 +54,8 @@
 
 .filterCheckbox__input:checked+.filterCheckbox__label::after {
     background-color: #fff;
+    left: 2px;
+    top: 2px;
 }
 
 @media screen and (max-width: 991.98px) {

@@ -24,6 +24,7 @@ export default function Profile({ logout, editProfile, message }) {
   }, [currentUser])
 
   const handleFormSubmit = (evt) => {
+    setIsActive(false);
     evt.preventDefault();
 
     editProfile({
@@ -40,7 +41,6 @@ export default function Profile({ logout, editProfile, message }) {
     })
 
     console.log(currentUser)
-    setIsActive(false);
     setErrorMessage(true);
   }
 
@@ -80,8 +80,8 @@ export default function Profile({ logout, editProfile, message }) {
         <button 
         type="button"
         onClick={handleFormSubmit}
-        className={`profile__submit-edit ${!isActive ? 'profile__submit-edit_hidden' : ''}`}
-        disabled={!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
+        className={`profile__submit-edit`}
+        disabled={isActive ||!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
   
         >Редактировать</button>
         <button className="profile__submit-logout" type="button" onClick={logout}><Link to="/signin" className="profile__submit-logout-link">Выйти из аккаунта</Link></button>
