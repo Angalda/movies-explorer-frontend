@@ -36,25 +36,27 @@ function App() {
   const [cardsNumber, setCardsNumber] = useState(4);
 
 
-/*Авторизация*/
-useEffect(() => {
-  if (authorized) {
-    mainApi.getProfile()
-      .then((res) => {
-        console.log(res.data);
-        setCurrentUser(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-}, [authorized])
+  /*Авторизация*/
+  useEffect(() => {
+    if (authorized) {
+
+      mainApi.getProfile()
+        .then((res) => {
+          setCurrentUser(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [authorized])
 
 useEffect(() => {
   const jwt = localStorage.getItem("jwt")
   if (jwt) {
-    
-    mainApi
+
+    checkToken()
+
+    /*mainApi
       .getProfile()
       .then((res) => {
         if (res) {
@@ -63,7 +65,9 @@ useEffect(() => {
       })
       .catch((err) => {
         console.log(err)
-      })
+      })*/
+
+
   }
 }, [history])
 
@@ -76,7 +80,7 @@ function checkToken() {
         .then((data) => {
           if (data) {
             setAuthorized(true);
-            setCurrentUser(data);
+            setCurrentUser(data.data);
           }
         })
         .catch((err) => {
@@ -122,7 +126,7 @@ function handleLogin(password, email) {
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token)
-        handlePageLogin();
+        checkToken();
         history.push("/movies");
       }
 
@@ -140,10 +144,7 @@ function handleLogin(password, email) {
     })
 }
 
-function handlePageLogin() {
-  setAuthorized(true);
-  checkToken();
-}
+
 
 //Выход
 function handleLogout() {
@@ -203,9 +204,7 @@ useEffect(() => {
    
    mainApi.getSaveMovies()
       .then((saveMovies) => {
-        console.log(currentUser)
         if(saveMovies) {
-          //setSavedMovies(saveMovies.data);
          const moviesOfCurrentUser = saveMovies.data.filter(
            (movie) => 
            currentUser._id === movie.owner
@@ -223,7 +222,7 @@ useEffect(() => {
 function handleSaveMovie (movie) {
   mainApi.saveMovie(movie)
   .then((newMovie)=>{
-    setSavedMovies([...savedMovies, newMovie]);
+    setSavedMovies([...savedMovies, newMovie.data]);
     localStorage.setItem('favoriteMovies', JSON.stringify(newMovie));
   })
   .catch((err) => console.log(err));

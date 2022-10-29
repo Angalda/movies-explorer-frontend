@@ -106,7 +106,6 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
 
       if (localStorage.getItem("beatfilmMovies")) {
         setFilteredMovies(JSON.parse(localStorage.getItem("beatfilmMovies")) )
-        console.log(filteredMovies)
       } else {
         getAllMovies();
         setEmptySearchResult(false);
