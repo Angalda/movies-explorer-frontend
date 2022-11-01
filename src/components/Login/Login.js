@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
-export default function Login({onLogin}) {
+export default function Login({onLogin, isLoadingLogin}) {
 
  
   const [email, setEmail] = useState('');
@@ -68,6 +68,7 @@ export default function Login({onLogin}) {
           placeholder="pochta@yandex.ru"
           onChange={emailHandler}
           value={email}
+          disabled={isLoadingLogin}
           ></input>
          <p className={`register__error ${!emailError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {emailError}</p>
 
@@ -80,12 +81,17 @@ export default function Login({onLogin}) {
           placeholder="••••••••••••••"
           onChange={passwordHandler}
           value={password}
+          disabled={isLoadingLogin}
           ></input>
           <p className={`register__error ${!passwordError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {passwordError}</p>
 
 
 
-          <button className={`login__submit ${!formValid ? 'login__submit_disabled' : ''}`} type="submit" disabled={!formValid}>Войти</button>
+          <button 
+          className={`login__submit ${!formValid ? 'login__submit_disabled' : ''}`} 
+          type="submit" 
+          disabled={!formValid || isLoadingLogin}
+          >Войти</button>
 
           <div className='login__register'>
             <p className='login__text-register'>Ещё не зарегистрированы?</p>

@@ -105,7 +105,7 @@
 
 .header__menu-link_active {
     text-decoration: underline;
-    color: #aaa;
+    color: #000;
   } 
 
 .header__account-container {

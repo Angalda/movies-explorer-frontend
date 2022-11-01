@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../../contexts/CurentUserContext'
 import useFormWithValidation from "../../utils/validation";
 import * as mainApi from "../../utils/MainApi";
 
-export default function Profile({ logout, editProfile, message }) {
+export default function Profile({ logout, editProfile, message, isLoadingProfile }) {
 
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
@@ -13,8 +13,7 @@ export default function Profile({ logout, editProfile, message }) {
   const emailInput = useRef();
   const [errorMessage, setErrorMessage] =useState(false)
 
-  const [isActive, setIsActive] = useState(false);
-  
+
  
   useEffect(() => {
       setValues({
@@ -24,7 +23,6 @@ export default function Profile({ logout, editProfile, message }) {
   }, [currentUser])
 
   const handleFormSubmit = (evt) => {
-    setIsActive(false);
     evt.preventDefault();
 
     editProfile({
@@ -58,6 +56,7 @@ export default function Profile({ logout, editProfile, message }) {
           minLength="2" 
           maxLength="30" 
           onChange={handleChange}
+          disabled={isLoadingProfile}
           value={values.name || ''}
           required />
 
@@ -72,6 +71,7 @@ export default function Profile({ logout, editProfile, message }) {
           required 
           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$"
           onChange={handleChange}
+          disabled={isLoadingProfile}
           value={values.email || ''}
           
           />
@@ -81,8 +81,7 @@ export default function Profile({ logout, editProfile, message }) {
         type="button"
         onClick={handleFormSubmit}
         className={`profile__submit-edit`}
-        disabled={isActive ||!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
-  
+        disabled={isLoadingProfile ||!isValid || (currentUser.name === values.name && currentUser.email === values.email)}
         >Редактировать</button>
         <button className="profile__submit-logout" type="button" onClick={logout}><Link to="/signin" className="profile__submit-logout-link">Выйти из аккаунта</Link></button>
         

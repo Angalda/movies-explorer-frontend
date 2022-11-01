@@ -1,4 +1,4 @@
-const MAX_SHORTMOVIES_DURATION = 40;
+import { MAX_SHORTMOVIES_DURATION } from "./constans";
 
 // Фильтрация фильмов по запросу
 const filterMovies = (movies, searchPhrase, shortMoviesHandler) => {

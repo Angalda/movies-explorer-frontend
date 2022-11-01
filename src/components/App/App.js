@@ -25,12 +25,14 @@ function App() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const [locationKeys, setLocationKeys] = useState([])
-
   const [savedMovies, setSavedMovies] = useState([])
   const [width, setWidth] = useState(window.innerWidth);
   const [listLength, setListLength] = useState(12);
   const [cardsNumber, setCardsNumber] = useState(4);
-
+  const [isLoadingRegister, setisLoadingRegister] = useState(false);
+  const [isLoadingLogin, setisLoadingLogin] = useState(false);
+  const [isLoadingProfile, setisLoadingProfile] = useState(false);
+  
   useEffect(() => {
     return history.listen(location => {
       if (history.action === 'PUSH') {
@@ -68,7 +70,7 @@ function App() {
     const jwt = localStorage.getItem("jwt")
     if (jwt) {
       checkToken()
-    }
+    } 
   }, [history])
 
   function checkToken() {
@@ -81,31 +83,37 @@ function App() {
             if (data) {
               setAuthorized(true);
               setCurrentUser(data.data);
-            }
+            } 
           })
           .catch((err) => {
 
             if (err === 401) {
               setAuthorized(false)
               console.log("401 - Токен не передан или передан не в том формате")
+              handleLogout()
+
             }
             console.log("401 - Переданный токен не корректен")
+            handleLogout()
+
 
           })
       }
       if (!jwt) {
-        setAuthorized(false)
+        setAuthorized(false);
+        handleLogout()
       }
     }
   }
 
   //Регистрация
   function handleRegister(name, email, password) {
+    setisLoadingRegister(true);
     mainApi
       .register(name, email, password)
       .then((res) => {
         if (res) {
-          handleLogin(email, password)
+          handleLogin(email, password);
         }
       })
       .catch((err) => {
@@ -117,10 +125,14 @@ function App() {
         }
 
       })
+      .finally(() => {
+        setisLoadingRegister(false);
+      })
   }
 
   //Вход
   function handleLogin(password, email) {
+    setisLoadingLogin(true);
     mainApi
       .login(email, password)
       .then((data) => {
@@ -142,6 +154,9 @@ function App() {
         }
 
       })
+      .finally(()=>{
+        setisLoadingLogin(false)
+      })
   }
 
   //Выход
@@ -155,6 +170,7 @@ function App() {
 
   //Редактирование
   function handleEditProfile({ name, email }) {
+    setisLoadingProfile(true);
     mainApi
       .editProfile(name, email)
       .then((res) => {
@@ -166,7 +182,11 @@ function App() {
       .catch((err) => {
         console.log(err);
         setMessage("Что-то пошло не так! Попробуйте ещё раз.");
-      });
+        checkToken();
+      })
+      .finally(()=>{
+        setisLoadingProfile(false);
+      })
 
   }
 
@@ -199,7 +219,6 @@ function App() {
   //Список сохраненных фильмов
   useEffect(() => {
     if (authorized) {
-
       mainApi.getSaveMovies()
         .then((saveMovies) => {
           if (saveMovies) {
@@ -211,7 +230,8 @@ function App() {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err)
+          checkToken()
         });
     }
   }, [authorized]);
@@ -223,7 +243,10 @@ function App() {
         setSavedMovies([...savedMovies, newMovie.data]);
         localStorage.setItem('favoriteMovies', JSON.stringify(newMovie));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        checkToken()
+      });
   };
 
   //Удаляем фильм
@@ -244,7 +267,10 @@ function App() {
 
         localStorage.setItem('favoriteMovies', JSON.stringify(newMoviesList));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        checkToken()
+      });
   }
 
   return (
@@ -281,19 +307,19 @@ function App() {
 
             <ProtectedRoute exact path="/profile">
               <Route>
-                <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message} />
+                <Profile editProfile={handleEditProfile} logout={handleLogout} loggedIn={loggedIn} authorized={authorized} message={message} isLoadingProfile={isLoadingProfile}/>
               </Route>
             </ProtectedRoute>
 
             <Route exact path="/signin">
               {authorized ? (<Redirect to="/" />) : (
-                <Login onLogin={handleLogin} />
+                <Login onLogin={handleLogin} isLoadingLogin={isLoadingLogin}/>
               )}
             </Route>
 
             <Route exact path="/signup" >
               {authorized ? (<Redirect to="/" />) : (
-                <Register register={handleRegister} />
+                <Register register={handleRegister} isLoadingRegister={isLoadingRegister}/>
               )}
             </Route>
 

@@ -15,8 +15,8 @@ export default function MoviesCard({
     trailerLink
  }) {
 
-    const [likeActive, setlikeActive] = useState(false);
-    const cardLikeButtonClassname=`moviesCard__select ${favorited || likeActive ? '' : 'moviesCard__select_hidden'}`
+    const [likeActive, setLikeActive] = useState(false);
+    const cardLikeButtonClassname=`moviesCard__select ${favorited /*|| likeActive*/ ? '' : 'moviesCard__select_hidden'}`
     const { pathname } = useLocation();
     const movieImage = !savedMoviesPage ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image ?? thumbImgPlaceholder;
 
@@ -36,14 +36,12 @@ export default function MoviesCard({
         };
 
         onLikeClick(saveMovie);
-        setlikeActive(true);
-
+        setLikeActive(true);
     }
 
     const handleDeleteClick = () => {
         onDeleteClick(movie)
     }
-
 
     return (
         <li className="moviesCard">

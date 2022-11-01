@@ -11,6 +11,7 @@ export default function Register(props) {
   const [passwordError, setPasswordError] = useState('');
   const [formValid, setFormValid] = useState(false);
 
+
   const emailHandler = (e) => {
     setEmail(e.target.value)
     const regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -81,7 +82,9 @@ export default function Register(props) {
           onChange={nameHandler} 
           minLength="2" 
           maxLength="100" 
+          disabled={props.isLoadingRegister}
           required></input>
+          
           <p className={`register__error ${!nameError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {nameError}</p>
 
           <label className="register__input-name">E-mail</label>
@@ -93,14 +96,24 @@ export default function Register(props) {
           onChange={emailHandler} 
           minLength="2" 
           maxLength="100"
+          disabled={props.isLoadingRegister}
           required></input>
           <p className={`register__error ${!emailError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {emailError}</p>
 
           <label className="register__input-name">Пароль</label>
-          <input className={`register__input register__input-password ${!passwordError ? '' : 'register__input-error'}`} type="password" name="password" value={password} onChange={passwordHandler} minLength="8" maxLength="50"required></input>
+          <input 
+          className={`register__input register__input-password ${!passwordError ? '' : 'register__input-error'}`} 
+          type="password" 
+          name="password" 
+          value={password} 
+          onChange={passwordHandler} 
+          minLength="8" 
+          maxLength="50"
+          disabled={props.isLoadingRegister}
+          required></input>
           <p className={`register__error ${!passwordError ? 'register__error_hidden' : ''}`}>Что-то пошло не так... {passwordError}</p>
 
-          <button className="register__submit" type="submit" disabled={!formValid}>Зарегистрироваться</button>
+          <button className="register__submit" type="submit" disabled={!formValid || props.isLoadingRegister}>Зарегистрироваться</button>
 
           <div className='register__login'>
             <p className='register__text-login'>Уже зарегистрированы?</p>
