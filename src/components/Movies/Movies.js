@@ -46,9 +46,12 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     localStorage.setItem(`searchPhrase`, inputValue);
     localStorage.setItem(`shortMoviesHandler`, shortMovies);
     const moviesList = filterMovies(getBeatfilmMoviesToStorage, inputValue, shortMovies);
-
+    const moviesListAll = filterMovies(getBeatfilmMoviesToStorage, inputValue);
+    console.log(moviesListAll);
+    console.log(moviesList);
     checkSearhResult(moviesList);
-    setInitialMoviesList(moviesList);
+    setInitialMoviesList(moviesListAll);
+
     setFilteredMovies(shortMovies ? filterShortMovies(moviesList) : moviesList);
     localStorage.setItem(`filteredMovies`, JSON.stringify(moviesList));
   };
@@ -73,11 +76,14 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     setIsLoadingData(true);
     setTimeout(() => setIsLoadingData(false), 500);
     setShortMovies(!shortMovies);
-
+   
     if (shortMovies) {
+    
       checkSearhResult(initialMoviesList);
       setFilteredMovies(initialMoviesList);
+      console.log(shortMovies)
     } else {
+      
       if (filterShortMovies(initialMoviesList).length === 0) {
         setFilteredMovies(filterShortMovies(initialMoviesList));
         setEmptySearchResult(true);
@@ -98,8 +104,10 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       setInitialMoviesList(foundMovies);
       if (localStorage.getItem("shortMoviesHandler") === "true") {
         setFilteredMovies(filterShortMovies(foundMovies));
+        
       } else {
         setFilteredMovies(foundMovies);
+        
       }
     } else {
 
