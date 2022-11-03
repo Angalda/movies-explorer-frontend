@@ -17,6 +17,14 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import ProtectedRoute from '../ProtectedRoute';
+import { SMALLSCREEN } from '../../utils/constants';
+import { MEDIUMSCREEN } from '../../utils/constants';
+import { MAX_LENGTH_CARD_LIST } from '../../utils/constants';
+import { MEDIUM_LENGTH_CARD_LIST } from '../../utils/constants';
+import { SMALL_LENGTH_CARD_LIST } from '../../utils/constants';
+import { MAX_CARDS_NUMBER } from '../../utils/constants';
+import { MEDIUM_CARDS_NUMBER } from '../../utils/constants';
+import { SMALL_CARDS_NUMBER } from '../../utils/constants';
 
 function App() {
   const loggedIn = true;
@@ -199,15 +207,15 @@ function App() {
   }
 
   useEffect(() => {
-    if (width > 991.98) {
-      setCardsNumber(4);
-      setListLength(12);
-    } else if (width <= 991.98) {
-      setCardsNumber(2);
-      setListLength(8);
-    } else if (width <= 575.98) {
-      setCardsNumber(1);
-      setListLength(5);
+    if (width > MEDIUMSCREEN) {
+      setCardsNumber(MAX_CARDS_NUMBER);
+      setListLength(MAX_LENGTH_CARD_LIST);
+    } else if (width <= MEDIUMSCREEN) {
+      setCardsNumber(MEDIUM_CARDS_NUMBER);
+      setListLength(MEDIUM_LENGTH_CARD_LIST);
+    } else if (width <= SMALLSCREEN) {
+      setCardsNumber(SMALL_CARDS_NUMBER );
+      setListLength(SMALL_LENGTH_CARD_LIST);
     }
   }, [width]);
 

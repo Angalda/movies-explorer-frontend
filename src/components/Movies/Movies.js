@@ -4,6 +4,12 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { filterMovies, filterShortMovies } from "../../utils/utils";
 import Preloader from "../Preloader/Preloader";
+import { SMALLSCREEN } from '../../utils/constants';
+import { MEDIUMSCREEN } from '../../utils/constants';
+import { MAX_LENGTH_CARD_LIST } from '../../utils/constants';
+import { MEDIUM_LENGTH_CARD_LIST } from '../../utils/constants';
+import { SMALL_LENGTH_CARD_LIST } from '../../utils/constants';
+
 
 export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listLength, setListLength, width, getMoreMovies}) {
   const [isLoadingData, setIsLoadingData] = useState(false);
@@ -36,12 +42,12 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
   // Поиск по фильмам
   const handleSearch = (inputValue) => {
     showLoader();
-    if (width > 991.98) {
-      setListLength(12);
-  } else if (width <= 991.98) {
-      setListLength(8);
-  } else if (width <= 575.98) {
-      setListLength(5);
+    if (width > MEDIUMSCREEN) {
+      setListLength(MAX_LENGTH_CARD_LIST);
+  } else if (width <= MEDIUMSCREEN) {
+      setListLength(MEDIUM_LENGTH_CARD_LIST);
+  } else if (width <= SMALLSCREEN) {
+      setListLength(SMALL_LENGTH_CARD_LIST);
   }
     localStorage.setItem(`searchPhrase`, inputValue);
     localStorage.setItem(`shortMoviesHandler`, shortMovies);
@@ -104,19 +110,15 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       setInitialMoviesList(foundMovies);
       if (localStorage.getItem("shortMoviesHandler") === "true") {
         setFilteredMovies(filterShortMovies(foundMovies));
-        
       } else {
         setFilteredMovies(foundMovies);
-        
       }
     } else {
-
       if (localStorage.getItem("beatfilmMovies")) {
         setFilteredMovies(JSON.parse(localStorage.getItem("beatfilmMovies")) )
       } else {
         getAllMovies();
         setEmptySearchResult(false);
-
       }
 ;
     }

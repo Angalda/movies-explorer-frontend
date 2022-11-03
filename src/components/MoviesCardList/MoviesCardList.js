@@ -17,12 +17,9 @@ export default function MoviesCardList({
     const checkIsFavorited = (saveMovieList, movie) => {
         return saveMovieList.find((element) => element.movieId === movie.id);
     }; 
-
       
     return (
-
         <section className="moviesCardList">
-
             <ul className="moviesCardList__list">
                 {emptySearchResult ? (
                     <h1 className="movie-list__not-found">Ничего не найдено</h1>
