@@ -5,7 +5,7 @@ import { filterMovies, filterShortMovies } from "../../utils/utils";
 import Preloader from "../Preloader/Preloader";
 
 
-export default function MoviesSave({saveMovieList, onDeleteClick, listLength, getMoreMovies}) {
+export default function MoviesSave({saveMovieList=[], onDeleteClick, listLength, getMoreMovies}) {
     const [initialMoviesList, setInitialMoviesList] = useState(saveMovieList);
     const [filteredMovies, setFilteredMovies] = useState(initialMoviesList);
     const [shortMovies, setShortMovies] = useState(false);

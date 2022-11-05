@@ -57,9 +57,8 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
     console.log(moviesList);
     checkSearhResult(moviesList);
     setInitialMoviesList(moviesListAll);
-
     setFilteredMovies(shortMovies ? filterShortMovies(moviesList) : moviesList);
-    localStorage.setItem(`filteredMovies`, JSON.stringify(moviesList));
+    localStorage.setItem(`filteredMovies`, JSON.stringify(moviesListAll));
   };
 
  /* useEffect(()=>{
@@ -79,21 +78,15 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
 
   // Клик на чекбокс корометражек
   const handleCheckboxClick = () => {
-    setIsLoadingData(true);
-    setTimeout(() => setIsLoadingData(false), 500);
     setShortMovies(!shortMovies);
-   
     if (shortMovies) {
-    
       checkSearhResult(initialMoviesList);
       setFilteredMovies(initialMoviesList);
       console.log(shortMovies)
     } else {
-      
       if (filterShortMovies(initialMoviesList).length === 0) {
         setFilteredMovies(filterShortMovies(initialMoviesList));
         setEmptySearchResult(true);
-        
       } else {
         setFilteredMovies(filterShortMovies(initialMoviesList));
         setEmptySearchResult(false);
@@ -115,12 +108,15 @@ export default function Movies({onLikeClick, onDeleteClick, saveMovieList, listL
       }
     } else {
       if (localStorage.getItem("beatfilmMovies")) {
-        setFilteredMovies(JSON.parse(localStorage.getItem("beatfilmMovies")) )
+        setInitialMoviesList(getBeatfilmMoviesToStorage);
+        if (localStorage.getItem("shortMoviesHandler") === "true") {
+          setFilteredMovies(filterShortMovies(getBeatfilmMoviesToStorage))
+        }
       } else {
         getAllMovies();
         setEmptySearchResult(false);
       }
-;
+
     }
   }, []);
  

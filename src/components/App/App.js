@@ -103,8 +103,6 @@ function App() {
             }
             console.log("401 - Переданный токен не корректен")
             handleLogout()
-
-
           })
       }
       if (!jwt) {
