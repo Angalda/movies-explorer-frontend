@@ -1,0 +1,9 @@
+export const MAX_SHORTMOVIES_DURATION = 40;
+export const SMALLSCREEN = 575.98;
+export const MEDIUMSCREEN = 991.98;
+export const MAX_LENGTH_CARD_LIST = 12;
+export const MEDIUM_LENGTH_CARD_LIST = 8;
+export const SMALL_LENGTH_CARD_LIST = 5;
+export const MAX_CARDS_NUMBER = 4;
+export const MEDIUM_CARDS_NUMBER  = 2;
+export const SMALL_CARDS_NUMBER  = 1;

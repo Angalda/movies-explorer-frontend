@@ -16,3 +16,5 @@
 @import url('./components/Login/Login.css');
 @import url('./components/NotFound/NotFound.css');
 @import url('./components/SavedMovies/SavedMovies.css');
+@import url('./components/Movies/Movies.css');
+@import url('./components/Preloader/Preloader.css');
