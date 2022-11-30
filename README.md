@@ -1,8 +1,23 @@
+<h1> Фронтенд для API проекта Movies с возможностью авторизации, регистрации пользователей, работы с фильмами.</h1> <br/>
 
-### https://movies.angalda.nomoredomains.sbs/movies -ссылка
-### https://github.com/Angalda/movies-explorer-frontend/pull/2 - pull request
-###  https://disk.yandex.ru/d/AaeJ9woPR-eNSQ - макет
+Дипломная работа на Яндекс Практикуме.
 
+Посмотреть проект: https://movies.angalda.nomoredomains.sbs/movies <br/>
+Макет:  https://disk.yandex.ru/d/AaeJ9woPR-eNSQ <br/>
+Ссылка на API: https://github.com/Angalda/movies-explorer-api <br/>
+
+Как развернуть проект:
+
+- Клонировать: git clone git@github.com:Angalda/movies-explorer-frontend.git <br/>
+- Установить зависимости: в корневой директории npm install <br/>
+- Запустить (порт 3000): npm run start <br/>
+
+Как развернуть API:
+
+- Клонировать: git clone git@github.com:Angalda/movies-explorer-api.git <br/>
+- Установить зависимости: в корневой директории npm install <br/>
+- Запустить (порт 3001): npm run dev <br/>
+<!---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -73,3 +88,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-->
